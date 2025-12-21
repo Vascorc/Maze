@@ -80,6 +80,8 @@ public:
                 }
 
                 Triangle tri;
+                glm::vec3 faceNormal;
+                
                 for (size_t v = 0; v < fv; v++) {
                     tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
                     
@@ -90,21 +92,33 @@ public:
                     if (v == 0) tri.v0 = glm::vec3(vx, vy, vz);
                     if (v == 1) tri.v1 = glm::vec3(vx, vy, vz);
                     if (v == 2) tri.v2 = glm::vec3(vx, vy, vz);
-
-                    // Store for rendering
-                    vertices.push_back(vx); vertices.push_back(vy); vertices.push_back(vz);
-                    
-                    // Normal (simplified, using face normal later if needed, or vertex normal)
-                    if (idx.normal_index >= 0) {
-                        vertices.push_back(attrib.normals[3 * idx.normal_index + 0]);
-                        vertices.push_back(attrib.normals[3 * idx.normal_index + 1]);
-                        vertices.push_back(attrib.normals[3 * idx.normal_index + 2]);
-                    } else {
-                        vertices.push_back(0.0f); vertices.push_back(1.0f); vertices.push_back(0.0f);
-                    }
                 }
                 
-                tri.normal = glm::normalize(glm::cross(tri.v1 - tri.v0, tri.v2 - tri.v0));
+                // Calculate face normal FIRST (before adding to vertices)
+                glm::vec3 edge1 = tri.v1 - tri.v0;
+                glm::vec3 edge2 = tri.v2 - tri.v0;
+                faceNormal = glm::normalize(glm::cross(edge1, edge2));
+                
+                // Now add vertices with the calculated face normal
+                for (size_t v = 0; v < fv; v++) {
+                    tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
+                    
+                    float vx = attrib.vertices[3 * idx.vertex_index + 0];
+                    float vy = attrib.vertices[3 * idx.vertex_index + 1];
+                    float vz = attrib.vertices[3 * idx.vertex_index + 2];
+
+                    // Store position
+                    vertices.push_back(vx); 
+                    vertices.push_back(vy); 
+                    vertices.push_back(vz);
+                    
+                    // Use calculated face normal (more reliable than OBJ normals)
+                    vertices.push_back(faceNormal.x);
+                    vertices.push_back(faceNormal.y);
+                    vertices.push_back(faceNormal.z);
+                }
+                
+                tri.normal = faceNormal;
                 tri.centroid = (tri.v0 + tri.v1 + tri.v2) / 3.0f;
 
                 // Classify
@@ -280,7 +294,7 @@ public:
                 startPosition = tri.centroid;
             }
         }
-        startPosition.y += 5.0f; // Eye height
+        startPosition.y += 12.0f; // Eye height (standing person)
 
         // Exit: Find floor closest to (0, 0, maxBounds.z) - The Gate?
         // Or maybe just the furthest point from center?
@@ -302,20 +316,23 @@ public:
 
         std::cout << "Start (Center): " << startPosition.x << " " << startPosition.y << " " << startPosition.z << std::endl;
         std::cout << "Exit (Gate?): " << exitPosition.x << " " << exitPosition.y << " " << exitPosition.z << std::endl;
+        
     }
 
-    float getFloorHeight(glm::vec3 pos) {
+    float getFloorHeight(glm::vec3 pos, bool checkSlope = true) {
         // Find floor triangle directly below/above pos
-        // We want the HIGHEST floor that is below the player or just the highest floor at this X,Z.
-        // Since we want to walk ON TOP of the maze, let's find the highest floor at X,Z.
+        // We want the HIGHEST WALKABLE floor at this X,Z position
         
         float bestY = -std::numeric_limits<float>::max(); // Start very low
         bool found = false;
+        const float MAX_WALKABLE_SLOPE = 0.5f; // Normal.y must be > 0.5 (angle < ~60°)
 
         for (const auto& tri : floorTriangles) {
-            // Optimization: check bounding box of triangle first?
-            // Or just check distance to centroid
+            // Optimization: check distance to centroid
             if (glm::distance(glm::vec2(pos.x, pos.z), glm::vec2(tri.centroid.x, tri.centroid.z)) > 500.0f) continue;
+
+            // Skip surfaces that are too steep (walls) if slope checking is enabled
+            if (checkSlope && tri.normal.y < MAX_WALKABLE_SLOPE) continue;
 
             // Barycentric coordinates for 2D (X, Z)
             float u, v, w;

@@ -25,7 +25,7 @@ unsigned int loadCubemap(std::vector<std::string> faces);
 glm::vec3 calculateCenter(const std::vector<float> &data);
 
 // --- Configurações ---
-const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_WIDTH = 800 ;
 const unsigned int SCR_HEIGHT = 600;
 
 // --- Variáveis globais ---
@@ -187,6 +187,15 @@ int main()
     };
     unsigned int cubemapTexture = loadCubemap(faces);
 
+// Print controls
+    std::cout << "\n========== CONTROLOS ==========" << std::endl;
+    std::cout << "W/A/S/D       - Mover (frente/esquerda/tras/direita)" << std::endl;
+    std::cout << "SHIFT         - Correr (2x velocidade)" << std::endl;
+    std::cout << "F             - Ligar/Desligar lanterna" << std::endl;
+    std::cout << "V             - Noclip (atravessar paredes)" << std::endl;
+    std::cout << "ESC           - Sair do jogo" << std::endl;
+    std::cout << "Mouse         - Olhar em volta" << std::endl;
+    std::cout << "==============================\n" << std::endl;
     // --- Render loop ---
     while (!glfwWindowShouldClose(window))
     {
@@ -243,7 +252,6 @@ int main()
 }
 
 // --- FunÃ§Ãµes ---
-// --- FunÃ§Ãµes ---
 void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maze)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -272,12 +280,14 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         fPressed = false;
     }
 
-    // Sprint (Shift)
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        camera.MovementSpeed *= 2.0f;
-
     // Save old position for collision handling
     glm::vec3 oldPosition = camera.Position;
+
+    // Sprint (Shift) - temporarily increase speed
+    float originalSpeed = camera.MovementSpeed;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        camera.MovementSpeed *= 1.5f; // 1.5x speed (was 2.0x, now more controlled)
+    }
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(0, deltaTime);
@@ -288,19 +298,31 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(3, deltaTime);
 
-    // Reset speed
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        camera.MovementSpeed /= 2.0f;
+    // Restore original speed
+    camera.MovementSpeed = originalSpeed;
 
-    // Gravity / Terrain Following
-    if (!noclip) {
-        float floorHeight = maze.getFloorHeight(camera.Position);
-        camera.Position.y = floorHeight + 6.0f; // Raise eyes (was 10.0f, now 6.0f + correct floor)
+    // Check Wall Collision FIRST (before adjusting height)
+    if (!noclip && maze.checkWallCollision(camera.Position, 5.0f)) {
+        camera.Position = oldPosition; // Revert if collision
     }
 
-    // Check Wall Collision
-    if (!noclip && maze.checkWallCollision(camera.Position, 5.0f)) { // Increase collision radius
-        camera.Position = oldPosition; // Revert if collision
+    // Gravity / Terrain Following with slope checking
+    if (!noclip) {
+        float oldFloorHeight = maze.getFloorHeight(oldPosition);
+        float newFloorHeight = maze.getFloorHeight(camera.Position);
+        
+        // Check if trying to climb a wall (height difference too large)
+        const float MAX_STEP_HEIGHT = 15.0f; // Maximum height player can step up
+        float heightDiff = newFloorHeight - oldFloorHeight;
+        
+        if (heightDiff > MAX_STEP_HEIGHT) {
+            // Trying to climb a wall - revert horizontal movement
+            camera.Position.x = oldPosition.x;
+            camera.Position.z = oldPosition.z;
+            newFloorHeight = oldFloorHeight; // Use old floor height
+        }
+        
+        camera.Position.y = newFloorHeight + 12.0f; // Eye height (standing person)
     }
 
     // Check Exit
@@ -309,25 +331,6 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         glfwSetWindowShouldClose(window, true);
     }
 
-    // Light controls
-    float lightMoveSpeed = camera.MovementSpeed * 2.0f;
-    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-        topLightPos.z -= lightMoveSpeed * deltaTime;
-    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-        topLightPos.z += lightMoveSpeed * deltaTime;
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-        topLightPos.x -= lightMoveSpeed * deltaTime;
-    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        topLightPos.x += lightMoveSpeed * deltaTime;
-
-    // Intensidade da luz
-    if (glfwGetKey(window, GLFW_KEY_KP_ADD) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS)
-        lightIntensity += 0.1f;
-
-    if (glfwGetKey(window, GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS)
-        lightIntensity -= 0.1f;
-
-    lightIntensity = glm::clamp(lightIntensity, 0.0f, 10.0f);
 }
 
 

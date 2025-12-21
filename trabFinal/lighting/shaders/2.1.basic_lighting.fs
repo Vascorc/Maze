@@ -20,30 +20,33 @@ uniform bool flashLightOn;
 void main(){
     vec3 topLightColor = vec3(1.0, 1.0, 0.8);
 
-    // Ambient
+    // Ambient (increased for debugging dark walls)
     float ambientStrength = 0.1;
     vec3 ambient = ambientStrength * topLightColor;
 
-    // Diffuse (Top Light)
+    // Diffuse (Top Light) - using abs() to work with inverted normals
     vec3 norm = normalize(Normal);
     vec3 lightDir = normalize(topLightPos - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
+    float diff = abs(dot(norm, lightDir));
     vec3 diffuse = diff * topLightColor * lightIntensity;
 
     // Flashlight (Spotlight)
     vec3 flashlight = vec3(0.0);
     if(flashLightOn) {
-        vec3 flashDir = normalize(viewPos - FragPos); // Direction from frag to eye (light source)
-        // Actually, for spotlight, we need direction from light to frag.
-        // But standard spotlight math:
+        // Direction from fragment to camera (light source)
         vec3 lightDirFlash = normalize(viewPos - FragPos);
+        
+        // Spotlight cone check (using -flashLightDir as it was working before)
         float theta = dot(lightDirFlash, normalize(-flashLightDir));
+        
+        // Smooth falloff at cone edges
         float epsilon = flashLightCutoff - flashLightOuterCutoff;
         float intensity = clamp((theta - flashLightOuterCutoff) / epsilon, 0.0, 1.0);
         
         if(theta > flashLightOuterCutoff) {
-            float diffFlash = max(dot(norm, lightDirFlash), 0.0);
-            flashlight = vec3(1.0, 1.0, 1.0) * diffFlash * intensity * 2.0; // 2.0 brightness
+            // Use abs() to make light work on both sides of surfaces (fixes inverted normals)
+            float diffFlash = abs(dot(norm, lightDirFlash));
+            flashlight = vec3(1.0, 1.0, 1.0) * diffFlash * intensity * 2.0;
         }
     }
 
