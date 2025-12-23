@@ -203,6 +203,10 @@ int main()
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
+        // Day/Night Cycle
+        lightIntensity -= 0.02f * (deltaTime / 2); // Slow decrease
+        if (lightIntensity < 0.1f) lightIntensity = 0.1f; // Minimum brightness
+
         processInput(window, camera, deltaTime, maze);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -214,6 +218,7 @@ int main()
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 5000.0f);
         skyboxShader.setMat4("view", view);
         skyboxShader.setMat4("projection", projection);
+        skyboxShader.setFloat("lightIntensity", lightIntensity);
 
         glBindVertexArray(skyboxVAO);
         glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
@@ -322,7 +327,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
             newFloorHeight = oldFloorHeight; // Use old floor height
         }
         
-        camera.Position.y = newFloorHeight + 12.0f; // Eye height (standing person)
+        camera.Position.y = newFloorHeight + 50.0f; // Eye height (standing person)
     }
 
     // Check Exit

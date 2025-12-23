@@ -294,7 +294,7 @@ public:
                 startPosition = tri.centroid;
             }
         }
-        startPosition.y += 12.0f; // Eye height (standing person)
+        startPosition.y += 50.0f; // Eye height (standing person)
 
         // Exit: Find floor closest to (0, 0, maxBounds.z) - The Gate?
         // Or maybe just the furthest point from center?
@@ -328,8 +328,8 @@ public:
         const float MAX_WALKABLE_SLOPE = 0.5f; // Normal.y must be > 0.5 (angle < ~60°)
 
         for (const auto& tri : floorTriangles) {
-            // Optimization: check distance to centroid
-            if (glm::distance(glm::vec2(pos.x, pos.z), glm::vec2(tri.centroid.x, tri.centroid.z)) > 500.0f) continue;
+            // Optimization removed: large triangles caused issues
+            // if (glm::distance(glm::vec2(pos.x, pos.z), glm::vec2(tri.centroid.x, tri.centroid.z)) > 500.0f) continue;
 
             // Skip surfaces that are too steep (walls) if slope checking is enabled
             if (checkSlope && tri.normal.y < MAX_WALKABLE_SLOPE) continue;
@@ -361,7 +361,7 @@ public:
             // Relaxed optimization: Check larger radius or remove check for walls
             // Walls can be large, so centroid might be far even if we are close to edge.
             // Let's increase to 500.0f or just remove it for safety.
-            if (glm::distance(position, tri.centroid) > 500.0f) continue; 
+            // if (glm::distance(position, tri.centroid) > 500.0f) continue; 
             if (checkTriangleCollision(position, radius, tri.v0, tri.v1, tri.v2)) return true;
         }
         return false;
