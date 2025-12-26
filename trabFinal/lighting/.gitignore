@@ -1,0 +1,15 @@
+# Build Objects
+obj/
+*.o
+
+# Executables
+MAZE
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp

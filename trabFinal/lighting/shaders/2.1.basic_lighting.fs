@@ -3,12 +3,17 @@ out vec4 FragColor;
 
 in vec3 Normal;  
 in vec3 FragPos;  
+in vec2 TexCoords;
 
 uniform vec3 lightPos; 
 uniform vec3 lightColor;
 uniform float lightIntensity; 
 uniform vec3 topLightPos; 
 uniform vec3 objectColor;
+uniform sampler2D wallTexture;
+uniform sampler2D floorTexture;
+uniform sampler2D gateTexture;
+uniform int objectType; // 0 = Maze, 1 = Gate
 
 // Flashlight uniforms
 uniform vec3 viewPos;
@@ -20,6 +25,21 @@ uniform bool flashLightOn;
 void main(){
     vec3 topLightColor = vec3(1.0, 1.0, 0.8);
 
+    // Initial color from texture
+    vec3 texColor;
+    
+    if (objectType == 1) {
+        // Gate
+        texColor = texture(gateTexture, TexCoords).rgb;
+    } else {
+        // Maze (Walls/Floor)
+        if (Normal.y > 0.5) {
+            texColor = texture(floorTexture, TexCoords).rgb;
+        } else {
+            texColor = texture(wallTexture, TexCoords).rgb;
+        }
+    }
+    
     // Ambient (increased for debugging dark walls)
     float ambientStrength = 0.1;
     vec3 ambient = ambientStrength * topLightColor;
@@ -50,6 +70,8 @@ void main(){
         }
     }
 
-    vec3 result = (ambient + diffuse + flashlight) * objectColor;
+    // Multiply lighting with texture color instead of objectColor (or mix them)
+    // Using texColor directly gives better texture visibility
+    vec3 result = (ambient + diffuse + flashlight) * texColor;
     FragColor = vec4(result, 1.0);
 }

@@ -89,6 +89,71 @@ int main()
     camera.MovementSpeed = maze.modelSize / 20.0f;
     camera.MouseSensitivity = 0.005f;
 
+    // Carregar textura da parede (bricks)
+    stbi_set_flip_vertically_on_load(true);
+    unsigned int wallTexture;
+    glGenTextures(1, &wallTexture);
+    glBindTexture(GL_TEXTURE_2D, wallTexture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load("imagens/wall_texture.png", &width, &height, &nrChannels, 0);
+    if (data) {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        std::cout << "Textura parede carregada!" << std::endl;
+    } else {
+        std::cout << "Falha ao carregar textura parede" << std::endl;
+    }
+    stbi_image_free(data);
+
+    // Carregar textura do chão
+    unsigned int floorTexture;
+    glGenTextures(1, &floorTexture);
+    glBindTexture(GL_TEXTURE_2D, floorTexture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    data = stbi_load("imagens/floor_texture.png", &width, &height, &nrChannels, 0);
+    if (data) {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        std::cout << "Textura chao carregada!" << std::endl;
+    } else {
+        std::cout << "Falha ao carregar textura chao" << std::endl;
+    }
+    stbi_image_free(data);
+
+    // Carregar textura do portão (gate)
+    unsigned int gateTexture;
+    glGenTextures(1, &gateTexture);
+    glBindTexture(GL_TEXTURE_2D, gateTexture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    data = stbi_load("imagens/gate_texture.png", &width, &height, &nrChannels, 0);
+    if (data) {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        std::cout << "Textura portao carregada!" << std::endl;
+    } else {
+        std::cout << "Falha ao carregar textura portao" << std::endl;
+    }
+    stbi_image_free(data);
+
     // Configurar skybox
     std::vector<std::string> faces {
         "imagens/right.png",
@@ -139,6 +204,19 @@ int main()
         lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         lightingShader.setFloat("lightIntensity", lightIntensity);
         lightingShader.setVec3("topLightPos", topLightPos);
+        
+        // Bind textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, wallTexture);
+        lightingShader.setInt("wallTexture", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, floorTexture);
+        lightingShader.setInt("floorTexture", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, gateTexture);
+        lightingShader.setInt("gateTexture", 2);
 
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera.GetViewMatrix();
@@ -152,7 +230,12 @@ int main()
         lightingShader.setFloat("flashLightOuterCutoff", glm::cos(glm::radians(17.5f)));
         lightingShader.setBool("flashLightOn", flashLightOn);
 
+        // Draw Maze (Type 0)
+        lightingShader.setInt("objectType", 0);
         maze.draw(lightingShader);
+
+        // Draw Exit (Type 1)
+        lightingShader.setInt("objectType", 1);
         maze.drawExit(lightingShader);
 
         // Ecrã de vitória
@@ -228,7 +311,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         f11Pressed = false;
     }
 
-    glm::vec3 oldPosition = camera.Position;
+
 
     // Sprint (Shift)
     float originalSpeed = camera.MovementSpeed;
@@ -236,38 +319,63 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         camera.MovementSpeed *= 1.5f;
     }
 
-    // Movimento WASD
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(0, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(1, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(2, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(3, deltaTime);
-
-    camera.MovementSpeed = originalSpeed;
-
-    // Colisão com paredes
-    if (!noclip && maze.checkWallCollision(camera.Position, 5.0f)) {
-        camera.Position = oldPosition;
-    }
-
-    // Gravidade e seguimento do terreno
-    if (!noclip) {
-        float oldFloorHeight = maze.getFloorHeight(oldPosition);
-        float newFloorHeight = maze.getFloorHeight(camera.Position);
+    // Physics Sub-stepping
+    int steps = 4;
+    float subDeltaTime = deltaTime / steps;
+    
+    for (int i = 0; i < steps; i++) {
+        glm::vec3 stepOldPosition = camera.Position;
         
-        const float MAX_STEP_HEIGHT = 15.0f;
-        float heightDiff = newFloorHeight - oldFloorHeight;
-        
-        if (heightDiff > MAX_STEP_HEIGHT) {
-            camera.Position.x = oldPosition.x;
-            camera.Position.z = oldPosition.z;
-            newFloorHeight = oldFloorHeight;
+        // Movimento WASD
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+            camera.ProcessKeyboard(0, subDeltaTime);
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+            camera.ProcessKeyboard(1, subDeltaTime);
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+            camera.ProcessKeyboard(2, subDeltaTime);
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+            camera.ProcessKeyboard(3, subDeltaTime);
+            
+        // Colisão com paredes
+        if (!noclip && maze.checkWallCollision(camera.Position, 5.0f)) {
+            camera.Position = stepOldPosition;
         }
         
-        camera.Position.y = newFloorHeight + 50.0f;
+        // Gravidade e seguimento do terreno
+        if (!noclip) {
+            float oldFloorHeight = maze.getFloorHeight(stepOldPosition);
+            float newFloorHeight = maze.getFloorHeight(camera.Position);
+            
+            // Revert if invalid floor (void)
+            if (newFloorHeight < -90000.0f) {
+                 camera.Position = stepOldPosition;
+                 newFloorHeight = oldFloorHeight;
+            } else {
+                const float MAX_STEP_HEIGHT = 15.0f;
+                float heightDiff = newFloorHeight - oldFloorHeight;
+                
+                // Revert if Step is too high
+                if (heightDiff > MAX_STEP_HEIGHT) {
+                    camera.Position.x = stepOldPosition.x;
+                    camera.Position.z = stepOldPosition.z;
+                    newFloorHeight = oldFloorHeight;
+                }
+            }
+            
+            // Apply height
+            if (newFloorHeight > -90000.0f) {
+                 camera.Position.y = newFloorHeight + 50.0f;
+            }
+        }
+    }
+
+    camera.MovementSpeed = originalSpeed;
+    
+    // Failsafe: If player fell through map, reset to start
+    if (camera.Position.y < -300.0f) {
+        std::cout << "Failsafe triggered! Resetting player." << std::endl;
+        camera.Position = maze.startPosition;
+        camera.Position.y += 50.0f;
     }
 
     // Verificar chegada ao portão
