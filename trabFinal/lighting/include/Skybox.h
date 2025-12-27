@@ -98,6 +98,10 @@ private:
         glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
+        // IMPORTANTE: Desativar flip vertical para cubemaps
+        // (o flip é usado para texturas normais, mas não para skybox)
+        stbi_set_flip_vertically_on_load(false);
+
         int width, height, nrChannels;
         for (unsigned int i = 0; i < faces.size(); i++)
         {
@@ -107,6 +111,7 @@ private:
                 GLenum format = (nrChannels == 3) ? GL_RGB : GL_RGBA;
                 glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
                 stbi_image_free(data);
+                std::cout << "Skybox face " << i << " carregada: " << faces[i] << std::endl;
             }
             else
             {
@@ -115,11 +120,18 @@ private:
             }
         }
 
+        // Configurar filtros de textura para melhor qualidade
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+        // Ativar seamless cubemap para eliminar costuras entre faces (OpenGL 3.2+)
+        glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+
+        // Reativar flip vertical para outras texturas que possam ser carregadas depois
+        stbi_set_flip_vertically_on_load(true);
 
         return textureID;
     }

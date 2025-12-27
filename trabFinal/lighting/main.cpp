@@ -19,7 +19,6 @@
 // Protótipos de funções
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void mouse_callback(GLFWwindow *window, double xpos, double ypos);
-void mouse_button_callback(GLFWwindow *window, int button, int action, int mods);
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maze);
 
@@ -32,7 +31,6 @@ Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
-bool mousePressed = false;
 bool noclip = false;
 bool flashLightOn = true;
 
@@ -47,6 +45,8 @@ int savedXPos, savedYPos, savedWidth, savedHeight;
 bool victoryAchieved = false;
 float victoryTime = 0.0f;
 
+bool showControls = false;
+
 int main()
 {
     glfwInit();
@@ -57,17 +57,24 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Labirinto 3D", NULL, NULL);
+    // Obter monitor primário e sua resolução
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    
+    // Criar janela em tela cheia
+    GLFWwindow *window = glfwCreateWindow(mode->width, mode->height, "Labirinto 3D", monitor, NULL);
     if (!window) {
         std::cout << "Erro ao criar janela GLFW\n";
         glfwTerminate();
         return -1;
     }
     glfwMakeContextCurrent(window);
+    
+    // Marcar como fullscreen desde o início
+    isFullscreen = true;
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetMouseButtonCallback(window, mouse_button_callback);
     glfwSetScrollCallback(window, scroll_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -154,6 +161,26 @@ int main()
     }
     stbi_image_free(data);
 
+    // Carregar textura dos controlos
+    unsigned int controlsTexture;
+    glGenTextures(1, &controlsTexture);
+    glBindTexture(GL_TEXTURE_2D, controlsTexture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    data = stbi_load("imagens/controlos.png", &width, &height, &nrChannels, 0);
+    if (data) {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        std::cout << "Textura controlos carregada!" << std::endl;
+    } else {
+        std::cout << "Falha ao carregar textura controlos" << std::endl;
+    }
+    stbi_image_free(data);
+
     // Configurar skybox
     std::vector<std::string> faces {
         "imagens/right.png",
@@ -172,6 +199,7 @@ int main()
     std::cout << "SHIFT         - Correr (2x velocidade)" << std::endl;
     std::cout << "F             - Ligar/Desligar lanterna" << std::endl;
     std::cout << "V             - Noclip (atravessar paredes)" << std::endl;
+    std::cout << "TAB           - Mostrar/Esconder controlos" << std::endl;
     std::cout << "ESC           - Sair do jogo" << std::endl;
     std::cout << "Mouse         - Olhar em volta" << std::endl;
     std::cout << "==============================\n" << std::endl;
@@ -253,6 +281,18 @@ int main()
             glDisable(GL_BLEND);
         }
 
+        // Mostrar controlos (TAB)
+        if (showControls) {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glDisable(GL_DEPTH_TEST);
+            
+            overlayRenderer.renderImageOverlay(overlayShader, controlsTexture);
+            
+            glEnable(GL_DEPTH_TEST);
+            glDisable(GL_BLEND);
+        }
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -287,6 +327,17 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         }
     } else {
         fPressed = false;
+    }
+
+    // Mostrar controlos (TAB)
+    static bool tabPressed = false;
+    if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS) {
+        if (!tabPressed) {
+            showControls = !showControls;
+            tabPressed = true;
+        }
+    } else {
+        tabPressed = false;
     }
 
     // Fullscreen (F11)
@@ -395,9 +446,6 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
 
 void mouse_callback(GLFWwindow *window, double xpos, double ypos)
 {
-    if (!mousePressed)
-        return;
-
     if (firstMouse) {
         lastX = xpos;
         lastY = ypos;
@@ -419,11 +467,7 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void mouse_button_callback(GLFWwindow *window, int button, int action, int mods)
-{
-    if (button == GLFW_MOUSE_BUTTON_LEFT)
-        mousePressed = (action == GLFW_PRESS);
-}
+
 
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {

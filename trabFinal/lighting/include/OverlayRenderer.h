@@ -45,6 +45,23 @@ public:
         glDrawArrays(GL_TRIANGLES, 0, 6);
     }
 
+    void renderImageOverlay(Shader& shader, unsigned int texture) {
+        shader.use();
+        shader.setVec3("overlayColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader.setFloat("alpha", 0.95f);  // Quase opaco
+        shader.setFloat("time", 0.0f);
+        shader.setInt("useTexture", 1);  // Ativar modo textura
+        
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        shader.setInt("imageTexture", 0);
+        
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        
+        shader.setInt("useTexture", 0);  // Desativar modo textura
+    }
+
     ~OverlayRenderer() {
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);
