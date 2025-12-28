@@ -181,6 +181,26 @@ int main()
     }
     stbi_image_free(data);
 
+    // Carregar textura de vitoria
+    unsigned int victoryTexture;
+    glGenTextures(1, &victoryTexture);
+    glBindTexture(GL_TEXTURE_2D, victoryTexture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    data = stbi_load("imagens/victory.png", &width, &height, &nrChannels, 0);
+    if (data) {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        std::cout << "Textura vitoria carregada!" << std::endl;
+    } else {
+        std::cout << "Falha ao carregar textura vitoria" << std::endl;
+    }
+    stbi_image_free(data);
+
     // Configurar skybox
     std::vector<std::string> faces {
         "imagens/right.png",
@@ -274,9 +294,9 @@ int main()
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glDisable(GL_DEPTH_TEST);
             
-            float fadeAlpha = glm::min(victoryTime / 0.5f, 1.0f);
-            overlayRenderer.renderOverlay(overlayShader, glm::vec3(1.0f, 0.84f, 0.0f), fadeAlpha * 0.6f, victoryTime);
-            
+            // Usar a imagem de vitoria em vez de apenas cor
+            overlayRenderer.renderImageOverlay(overlayShader, victoryTexture, (float)scrWidth, (float)scrHeight);
+             
             glEnable(GL_DEPTH_TEST);
             glDisable(GL_BLEND);
         }
@@ -287,7 +307,7 @@ int main()
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glDisable(GL_DEPTH_TEST);
             
-            overlayRenderer.renderImageOverlay(overlayShader, controlsTexture);
+            overlayRenderer.renderImageOverlay(overlayShader, controlsTexture, (float)scrWidth, (float)scrHeight);
             
             glEnable(GL_DEPTH_TEST);
             glDisable(GL_BLEND);
@@ -371,7 +391,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     }
 
     // Physics Sub-stepping
-    int steps = 4;
+    int steps = 2; // Reduced from 4 for performance
     float subDeltaTime = deltaTime / steps;
     
     for (int i = 0; i < steps; i++) {

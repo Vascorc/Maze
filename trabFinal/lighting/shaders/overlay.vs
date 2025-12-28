@@ -4,8 +4,10 @@ layout (location = 1) in vec2 aTexCoord;
 
 out vec2 TexCoord;
 
+uniform vec2 scale;
+
 void main()
 {
-    gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);
+    gl_Position = vec4(aPos.x * scale.x, aPos.y * scale.y, 0.0, 1.0);
     TexCoord = aTexCoord;
 }

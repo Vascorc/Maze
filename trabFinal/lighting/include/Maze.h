@@ -14,6 +14,22 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <tiny_obj_loader.h>
 
+// Helper to check if a point is in triangle (2D XZ)
+bool isPointInTriangle(glm::vec2 p, glm::vec2 a, glm::vec2 b, glm::vec2 c) {
+    glm::vec2 v0 = b - a, v1 = c - a, v2 = p - a;
+    float d00 = glm::dot(v0, v0);
+    float d01 = glm::dot(v0, v1);
+    float d11 = glm::dot(v1, v1);
+    float d20 = glm::dot(v2, v0);
+    float d21 = glm::dot(v2, v1);
+    float denom = d00 * d11 - d01 * d01;
+    if (std::abs(denom) < 1e-6) return false;
+    float v = (d11 * d20 - d01 * d21) / denom;
+    float w = (d00 * d21 - d01 * d20) / denom;
+    float u = 1.0f - v - w;
+    return (u >= 0 && v >= 0 && w >= 0);
+}
+
 class Maze {
 public:
     unsigned int VAO, VBO;
@@ -43,6 +59,7 @@ public:
         setupMesh();
         initExitMarker();
         setRandomStartAndExit();
+        buildSpatialGrid();
     }
 
     void loadModel(const std::string& filepath) {
@@ -284,6 +301,13 @@ public:
         minBounds = glm::vec3(minX, minY, minZ);
         maxBounds = glm::vec3(maxX, maxY, maxZ);
         modelSize = glm::distance(minBounds, maxBounds);
+
+        // Expand bounds to include floor area (addFloor uses 100.0f expansion)
+        float floorExpand = 100.0f;
+        minBounds.x -= floorExpand;
+        minBounds.z -= floorExpand;
+        maxBounds.x += floorExpand;
+        maxBounds.z += floorExpand;
     }
 
     void draw(Shader& shader) {
@@ -329,39 +353,118 @@ public:
         std::cout << "Saida: " << exitPosition.x << " " << exitPosition.y << " " << exitPosition.z << std::endl;
     }
 
+    // Spatial Grid Constants and Members
+    static const int GRID_DIM = 50;
+    std::vector<size_t> z_wallGrid[GRID_DIM][GRID_DIM];
+    std::vector<size_t> z_floorGrid[GRID_DIM][GRID_DIM];
+    float z_gridCellSizeX = 1.0f;
+    float z_gridCellSizeZ = 1.0f;
+
+    void buildSpatialGrid() {
+        float width = maxBounds.x - minBounds.x;
+        float depth = maxBounds.z - minBounds.z;
+        if (width < 0.1f) width = 1.0f;
+        if (depth < 0.1f) depth = 1.0f;
+        
+        z_gridCellSizeX = width / GRID_DIM;
+        z_gridCellSizeZ = depth / GRID_DIM;
+        
+        // Populate Wall Grid
+        for(size_t i = 0; i < wallTriangles.size(); i++) {
+             addTriangleToGrid(wallTriangles[i], i, z_wallGrid);
+        }
+        
+        // Populate Floor Grid
+        for(size_t i = 0; i < floorTriangles.size(); i++) {
+             addTriangleToGrid(floorTriangles[i], i, z_floorGrid);
+        }
+    }
+    
+    void addTriangleToGrid(const Triangle& tri, size_t idx, std::vector<size_t> (&grid)[GRID_DIM][GRID_DIM]) {
+         float minX = std::min({tri.v0.x, tri.v1.x, tri.v2.x});
+         float maxX = std::max({tri.v0.x, tri.v1.x, tri.v2.x});
+         float minZ = std::min({tri.v0.z, tri.v1.z, tri.v2.z});
+         float maxZ = std::max({tri.v0.z, tri.v1.z, tri.v2.z});
+         
+         int startX = (int)((minX - minBounds.x) / z_gridCellSizeX);
+         int endX   = (int)((maxX - minBounds.x) / z_gridCellSizeX);
+         int startZ = (int)((minZ - minBounds.z) / z_gridCellSizeZ);
+         int endZ   = (int)((maxZ - minBounds.z) / z_gridCellSizeZ);
+         
+         // Clamp indices
+         startX = std::max(0, std::min(GRID_DIM-1, startX));
+         endX   = std::max(0, std::min(GRID_DIM-1, endX));
+         startZ = std::max(0, std::min(GRID_DIM-1, startZ));
+         endZ   = std::max(0, std::min(GRID_DIM-1, endZ));
+         
+         for(int x = startX; x <= endX; x++) {
+             for(int z = startZ; z <= endZ; z++) {
+                 grid[x][z].push_back(idx);
+             }
+         }
+    }
+
 
 
     float getFloorHeight(glm::vec3 pos, bool checkSlope = true) {
+        if (z_gridCellSizeX <= 0 || z_gridCellSizeZ <= 0) return -99999.0f;
+        
+        int gx = (int)((pos.x - minBounds.x) / z_gridCellSizeX);
+        int gz = (int)((pos.z - minBounds.z) / z_gridCellSizeZ);
+        
         float bestY = -std::numeric_limits<float>::max();
         bool found = false;
         const float MAX_WALKABLE_SLOPE = 0.5f;
 
-        for (const auto& tri : floorTriangles) {
-            if (checkSlope && tri.normal.y < MAX_WALKABLE_SLOPE) continue;
+        // Check 3x3 neighborhood
+        int range = 1;
 
-            float u, v, w;
-            barycentric(glm::vec2(pos.x, pos.z), 
-                        glm::vec2(tri.v0.x, tri.v0.z), 
-                        glm::vec2(tri.v1.x, tri.v1.z), 
-                        glm::vec2(tri.v2.x, tri.v2.z), u, v, w);
-            
-            if (u >= 0 && v >= 0 && w >= 0) {
-                float height = u * tri.v0.y + v * tri.v1.y + w * tri.v2.y;
-                
-                if (height > bestY) {
-                    bestY = height;
-                    found = true;
+        for(int x = gx - range; x <= gx + range; x++) {
+            for(int z = gz - range; z <= gz + range; z++) {
+                if(x >= 0 && x < GRID_DIM && z >= 0 && z < GRID_DIM) {
+                    for(size_t idx : z_floorGrid[x][z]) {
+                        const auto& tri = floorTriangles[idx];
+                        if (checkSlope && tri.normal.y < MAX_WALKABLE_SLOPE) continue;
+                        
+                        float u, v, w;
+                        barycentric(glm::vec2(pos.x, pos.z), 
+                                    glm::vec2(tri.v0.x, tri.v0.z), 
+                                    glm::vec2(tri.v1.x, tri.v1.z), 
+                                    glm::vec2(tri.v2.x, tri.v2.z), u, v, w);
+                        
+                        if (u >= 0 && v >= 0 && w >= 0) {
+                            float height = u * tri.v0.y + v * tri.v1.y + w * tri.v2.y;
+                            if (height > bestY) {
+                                bestY = height;
+                                found = true;
+                            }
+                        }
+                    }
                 }
             }
         }
         
-        if (!found) return -99999.0f; // Return specific error value
+        if (!found) return -99999.0f;
         return bestY;
     }
 
     bool checkWallCollision(glm::vec3 position, float radius = 1.0f) {
-        for (const auto& tri : wallTriangles) {
-            if (checkTriangleCollision(position, radius, tri.v0, tri.v1, tri.v2)) return true;
+        if (z_gridCellSizeX <= 0 || z_gridCellSizeZ <= 0) return false;
+
+        int gx = (int)((position.x - minBounds.x) / z_gridCellSizeX);
+        int gz = (int)((position.z - minBounds.z) / z_gridCellSizeZ);
+        
+        int range = 1;
+        
+        for(int x = gx - range; x <= gx + range; x++) {
+            for(int z = gz - range; z <= gz + range; z++) {
+                if(x >= 0 && x < GRID_DIM && z >= 0 && z < GRID_DIM) {
+                    for(size_t idx : z_wallGrid[x][z]) {
+                        if (checkTriangleCollision(position, radius, wallTriangles[idx].v0, wallTriangles[idx].v1, wallTriangles[idx].v2)) 
+                            return true;
+                    }
+                }
+            }
         }
         return false;
     }

@@ -14,7 +14,15 @@ void main()
     if (useTexture == 1) {
         // Modo textura - renderizar imagem
         vec4 texColor = texture(imageTexture, TexCoord);
-        FragColor = vec4(texColor.rgb, texColor.a * alpha);
+        
+        // Calcular luminancia (brilho) do pixel
+        float luminance = dot(texColor.rgb, vec3(0.299, 0.587, 0.114));
+        
+        // Multiplicar cor pelo overlayColor para tint
+        vec3 finalColor = texColor.rgb * overlayColor;
+        
+        // Usar luminancia como alpha - pixels pretos ficam transparentes
+        FragColor = vec4(finalColor, luminance * alpha);
     } else {
         // Modo overlay animado (vitória)
         // Create a vignette effect - darker at edges, brighter in center
