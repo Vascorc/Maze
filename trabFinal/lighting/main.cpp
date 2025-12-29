@@ -391,7 +391,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     }
 
     // Physics Sub-stepping
-    int steps = 2; // Reduced from 4 for performance
+    int steps = 8; // Increased to prevent tunneling
     float subDeltaTime = deltaTime / steps;
     
     for (int i = 0; i < steps; i++) {

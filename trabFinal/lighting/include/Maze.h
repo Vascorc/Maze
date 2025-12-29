@@ -454,10 +454,12 @@ public:
         int gx = (int)((position.x - minBounds.x) / z_gridCellSizeX);
         int gz = (int)((position.z - minBounds.z) / z_gridCellSizeZ);
         
-        int range = 1;
+        // Dynamic range based on radius to ensure we check all relevant cells
+        int rangeX = (int)(radius / z_gridCellSizeX) + 1;
+        int rangeZ = (int)(radius / z_gridCellSizeZ) + 1;
         
-        for(int x = gx - range; x <= gx + range; x++) {
-            for(int z = gz - range; z <= gz + range; z++) {
+        for(int x = gx - rangeX; x <= gx + rangeX; x++) {
+            for(int z = gz - rangeZ; z <= gz + rangeZ; z++) {
                 if(x >= 0 && x < GRID_DIM && z >= 0 && z < GRID_DIM) {
                     for(size_t idx : z_wallGrid[x][z]) {
                         if (checkTriangleCollision(position, radius, wallTriangles[idx].v0, wallTriangles[idx].v1, wallTriangles[idx].v2)) 
