@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Labirinto 3D: Referência à classe Maze</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Labirinto 3D<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Componentes</a> &#124;
+<a href="#pub-methods">Membros públicos</a> &#124;
+<a href="#pub-attribs">Atributos Públicos</a> &#124;
+<a href="#pub-static-attribs">Atributos Públicos Estáticos</a> &#124;
+<a href="#pri-methods">Membros privados</a> &#124;
+<a href="classMaze-members.html">Mostrar lista completa dos membros</a>  </div>
+  <div class="headertitle"><div class="title">Referência à classe Maze</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Manages the 3D model of the maze, collision detection, and spatial partitioning.  
+ <a href="classMaze.html#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Maze_8h_source.html">Maze.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Componentes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMaze_1_1Triangle.html">Triangle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a triangle in the maze geometry.  <a href="structMaze_1_1Triangle.html#details">Mais...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Membros públicos</h2></td></tr>
+<tr class="memitem:a225d6ea35fdf0ca65621ebd5c22efe1e" id="r_a225d6ea35fdf0ca65621ebd5c22efe1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a225d6ea35fdf0ca65621ebd5c22efe1e">Maze</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> std::string &amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">filepath</a>)</td></tr>
+<tr class="memdesc:a225d6ea35fdf0ca65621ebd5c22efe1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that loads and processes the maze model.  <br /></td></tr>
+<tr class="separator:a225d6ea35fdf0ca65621ebd5c22efe1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae0536b465d319f91bf5e146cb1df0b1" id="r_aae0536b465d319f91bf5e146cb1df0b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aae0536b465d319f91bf5e146cb1df0b1">loadModel</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> std::string &amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">filepath</a>)</td></tr>
+<tr class="separator:aae0536b465d319f91bf5e146cb1df0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea08fe2a70b34ccd58e586ac22dc894a" id="r_aea08fe2a70b34ccd58e586ac22dc894a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aea08fe2a70b34ccd58e586ac22dc894a">addFloor</a> ()</td></tr>
+<tr class="separator:aea08fe2a70b34ccd58e586ac22dc894a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e79f4443b9774b0b0e51b44b834891" id="r_a12e79f4443b9774b0b0e51b44b834891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a12e79f4443b9774b0b0e51b44b834891">setupMesh</a> ()</td></tr>
+<tr class="separator:a12e79f4443b9774b0b0e51b44b834891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43a0474243e0514c5ebe14ce6b79c78" id="r_aa43a0474243e0514c5ebe14ce6b79c78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aa43a0474243e0514c5ebe14ce6b79c78">initExitMarker</a> ()</td></tr>
+<tr class="separator:aa43a0474243e0514c5ebe14ce6b79c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce5f03152b12f3b33b1ceafb5e0d442" id="r_a7ce5f03152b12f3b33b1ceafb5e0d442"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a7ce5f03152b12f3b33b1ceafb5e0d442">calculateBounds</a> ()</td></tr>
+<tr class="separator:a7ce5f03152b12f3b33b1ceafb5e0d442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb001063b9cbbac58207f896c938775d" id="r_adb001063b9cbbac58207f896c938775d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#adb001063b9cbbac58207f896c938775d">draw</a> (<a class="el" href="classShader.html">Shader</a> &amp;<a class="el" href="glad_8h.html#a57b2a96adb1d51204909a82d861e395e">shader</a>)</td></tr>
+<tr class="separator:adb001063b9cbbac58207f896c938775d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf30635a64bbcac001a999668d4bab1" id="r_a6cf30635a64bbcac001a999668d4bab1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a6cf30635a64bbcac001a999668d4bab1">drawExit</a> (<a class="el" href="classShader.html">Shader</a> &amp;<a class="el" href="glad_8h.html#a57b2a96adb1d51204909a82d861e395e">shader</a>)</td></tr>
+<tr class="separator:a6cf30635a64bbcac001a999668d4bab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4690d2f7d00f0bb43738648006d4d9f4" id="r_a4690d2f7d00f0bb43738648006d4d9f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a4690d2f7d00f0bb43738648006d4d9f4">setRandomStartAndExit</a> ()</td></tr>
+<tr class="separator:a4690d2f7d00f0bb43738648006d4d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6046c3da731115da0e1f4a0352da02bb" id="r_a6046c3da731115da0e1f4a0352da02bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a6046c3da731115da0e1f4a0352da02bb">buildSpatialGrid</a> ()</td></tr>
+<tr class="separator:a6046c3da731115da0e1f4a0352da02bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9feab7d0183c320b5c0d8b029227b49d" id="r_a9feab7d0183c320b5c0d8b029227b49d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a9feab7d0183c320b5c0d8b029227b49d">addTriangleToGrid</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="structMaze_1_1Triangle.html">Triangle</a> &amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">tri</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">idx</a>, std::vector&lt; <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a> &gt;(&amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">grid</a>)[<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>][<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>])</td></tr>
+<tr class="separator:a9feab7d0183c320b5c0d8b029227b49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a207139fd3fd182f12bd3898d1c3fde4d" id="r_a207139fd3fd182f12bd3898d1c3fde4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a207139fd3fd182f12bd3898d1c3fde4d">getFloorHeight</a> (glm::vec3 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">pos</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">checkSlope</a>=<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a>)</td></tr>
+<tr class="separator:a207139fd3fd182f12bd3898d1c3fde4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2f07e146c3201ec8852aa512801dc00" id="r_ab2f07e146c3201ec8852aa512801dc00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ab2f07e146c3201ec8852aa512801dc00">checkWallCollision</a> (glm::vec3 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">position</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">radius</a>=1.0f)</td></tr>
+<tr class="separator:ab2f07e146c3201ec8852aa512801dc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos Públicos</h2></td></tr>
+<tr class="memitem:aff2e73487404cfe2c3cb52b1a281a667" id="r_aff2e73487404cfe2c3cb52b1a281a667"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aff2e73487404cfe2c3cb52b1a281a667">VAO</a></td></tr>
+<tr class="memdesc:aff2e73487404cfe2c3cb52b1a281a667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Array Object for the maze.  <br /></td></tr>
+<tr class="separator:aff2e73487404cfe2c3cb52b1a281a667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7057bfa2f2751a37b79b137f63cd46b6" id="r_a7057bfa2f2751a37b79b137f63cd46b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a7057bfa2f2751a37b79b137f63cd46b6">VBO</a></td></tr>
+<tr class="memdesc:a7057bfa2f2751a37b79b137f63cd46b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Buffer Object for the maze.  <br /></td></tr>
+<tr class="separator:a7057bfa2f2751a37b79b137f63cd46b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a248588ab65bdd6cad23e7097d36c8e9e" id="r_a248588ab65bdd6cad23e7097d36c8e9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a248588ab65bdd6cad23e7097d36c8e9e">exitVAO</a></td></tr>
+<tr class="separator:a248588ab65bdd6cad23e7097d36c8e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a941d9d535285c2ec884e0518f7f5f8fb" id="r_a941d9d535285c2ec884e0518f7f5f8fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a941d9d535285c2ec884e0518f7f5f8fb">exitVBO</a></td></tr>
+<tr class="memdesc:a941d9d535285c2ec884e0518f7f5f8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">VAO/VBO for the exit marker.  <br /></td></tr>
+<tr class="separator:a941d9d535285c2ec884e0518f7f5f8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bcbd9266a53906f02da573a936beb47" id="r_a5bcbd9266a53906f02da573a936beb47"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a5bcbd9266a53906f02da573a936beb47">vertices</a></td></tr>
+<tr class="memdesc:a5bcbd9266a53906f02da573a936beb47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interleaved vertex data (Position, Normal, TexCoords)  <br /></td></tr>
+<tr class="separator:a5bcbd9266a53906f02da573a936beb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09310b4a7838f511440788b14928ff5d" id="r_a09310b4a7838f511440788b14928ff5d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structMaze_1_1Triangle.html">Triangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a09310b4a7838f511440788b14928ff5d">floorTriangles</a></td></tr>
+<tr class="memdesc:a09310b4a7838f511440788b14928ff5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of triangles classified as walkable floor.  <br /></td></tr>
+<tr class="separator:a09310b4a7838f511440788b14928ff5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd53bdf8d357d826dce5eb2c98b0725e" id="r_acd53bdf8d357d826dce5eb2c98b0725e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structMaze_1_1Triangle.html">Triangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#acd53bdf8d357d826dce5eb2c98b0725e">wallTriangles</a></td></tr>
+<tr class="memdesc:acd53bdf8d357d826dce5eb2c98b0725e"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of triangles classified as obstacles.  <br /></td></tr>
+<tr class="separator:acd53bdf8d357d826dce5eb2c98b0725e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53724e458be404c7316d5b0aeea825ee" id="r_a53724e458be404c7316d5b0aeea825ee"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a53724e458be404c7316d5b0aeea825ee">startPosition</a></td></tr>
+<tr class="memdesc:a53724e458be404c7316d5b0aeea825ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculated starting position for the player.  <br /></td></tr>
+<tr class="separator:a53724e458be404c7316d5b0aeea825ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3450af84a5812d81bbc5124ebdb5bfc7" id="r_a3450af84a5812d81bbc5124ebdb5bfc7"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a3450af84a5812d81bbc5124ebdb5bfc7">exitPosition</a></td></tr>
+<tr class="memdesc:a3450af84a5812d81bbc5124ebdb5bfc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the exit gate.  <br /></td></tr>
+<tr class="separator:a3450af84a5812d81bbc5124ebdb5bfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a677ea92dc0c67be006936a7d2fd768e9" id="r_a677ea92dc0c67be006936a7d2fd768e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a677ea92dc0c67be006936a7d2fd768e9">modelSize</a></td></tr>
+<tr class="memdesc:a677ea92dc0c67be006936a7d2fd768e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diagonal size of the maze bounding box.  <br /></td></tr>
+<tr class="separator:a677ea92dc0c67be006936a7d2fd768e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1b1acf782eb7898d09942f566bb4c1e" id="r_aa1b1acf782eb7898d09942f566bb4c1e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aa1b1acf782eb7898d09942f566bb4c1e">minBounds</a></td></tr>
+<tr class="memdesc:aa1b1acf782eb7898d09942f566bb4c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum (x,y,z) of the maze bounding box.  <br /></td></tr>
+<tr class="separator:aa1b1acf782eb7898d09942f566bb4c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8ebcfea4dfa3b7522997634d066e0a" id="r_a3f8ebcfea4dfa3b7522997634d066e0a"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a3f8ebcfea4dfa3b7522997634d066e0a">maxBounds</a></td></tr>
+<tr class="memdesc:a3f8ebcfea4dfa3b7522997634d066e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum (x,y,z) of the maze bounding box.  <br /></td></tr>
+<tr class="separator:a3f8ebcfea4dfa3b7522997634d066e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf16fe8425486390fd03ef4bfcc15f3b" id="r_adf16fe8425486390fd03ef4bfcc15f3b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#adf16fe8425486390fd03ef4bfcc15f3b">z_wallGrid</a> [<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>][<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>]</td></tr>
+<tr class="separator:adf16fe8425486390fd03ef4bfcc15f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44046097f0f064397a801efd38a8693b" id="r_a44046097f0f064397a801efd38a8693b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a44046097f0f064397a801efd38a8693b">z_floorGrid</a> [<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>][<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>]</td></tr>
+<tr class="separator:a44046097f0f064397a801efd38a8693b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b9ab5cf8a3b01ac403cc35ff024c20" id="r_ad1b9ab5cf8a3b01ac403cc35ff024c20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ad1b9ab5cf8a3b01ac403cc35ff024c20">z_gridCellSizeX</a> = 1.0f</td></tr>
+<tr class="separator:ad1b9ab5cf8a3b01ac403cc35ff024c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909bde6a5847087387654891140d9b04" id="r_a909bde6a5847087387654891140d9b04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a909bde6a5847087387654891140d9b04">z_gridCellSizeZ</a> = 1.0f</td></tr>
+<tr class="separator:a909bde6a5847087387654891140d9b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Atributos Públicos Estáticos</h2></td></tr>
+<tr class="memitem:a40c925047834f6188d9e5b4e203d4471" id="r_a40c925047834f6188d9e5b4e203d4471"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">static</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a> = 50</td></tr>
+<tr class="separator:a40c925047834f6188d9e5b4e203d4471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Membros privados</h2></td></tr>
+<tr class="memitem:ab092d74739c408fe222fe3890f448966" id="r_ab092d74739c408fe222fe3890f448966"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ab092d74739c408fe222fe3890f448966">barycentric</a> (glm::vec2 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">p</a>, glm::vec2 <a class="el" href="glad_8h.html#ac8729153468b5dcf13f971b21d84d4e5">a</a>, glm::vec2 <a class="el" href="glad_8h.html#a6eba317e3cf44d6d26c04a5a8f197dcb">b</a>, glm::vec2 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">c</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">u</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;<a class="el" href="glad_8h.html#a14cfbe2fc2234f5504618905b69d1e06">v</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;<a class="el" href="glad_8h.html#a1d0296e9e835f2e1ee17634af95fc1ec">w</a>)</td></tr>
+<tr class="separator:ab092d74739c408fe222fe3890f448966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3dc0fced366c49f04573d96f5a34be" id="r_a9b3dc0fced366c49f04573d96f5a34be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a9b3dc0fced366c49f04573d96f5a34be">checkTriangleCollision</a> (glm::vec3 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">sphereCenter</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">sphereRadius</a>, glm::vec3 <a class="el" href="glad_8h.html#a7062a23d1d434121d4a88f530703d06a">v0</a>, glm::vec3 <a class="el" href="glad_8h.html#a0779c3b73f9aa3a0ac5b0139b5d291d9">v1</a>, glm::vec3 <a class="el" href="glad_8h.html#a9a09a1837922b2b806f4589096a52049">v2</a>)</td></tr>
+<tr class="separator:a9b3dc0fced366c49f04573d96f5a34be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Manages the 3D model of the maze, collision detection, and spatial partitioning. </p>
+<p>This class handles loading the maze (OBJ file), classifying triangles as floor or walls, and organizing them into a spatial grid (Spatial Hashing) for efficient collision detection. </p>
+</div><h2 class="groupheader">Documentação dos Construtores &amp; Destrutor</h2>
+<a id="a225d6ea35fdf0ca65621ebd5c22efe1e" name="a225d6ea35fdf0ca65621ebd5c22efe1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225d6ea35fdf0ca65621ebd5c22efe1e">&#9670;&#160;</a></span>Maze()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Maze::Maze </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> std::string &amp;&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor that loads and processes the maze model. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Path to the .obj file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="aea08fe2a70b34ccd58e586ac22dc894a" name="aea08fe2a70b34ccd58e586ac22dc894a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea08fe2a70b34ccd58e586ac22dc894a">&#9670;&#160;</a></span>addFloor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::addFloor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9feab7d0183c320b5c0d8b029227b49d" name="a9feab7d0183c320b5c0d8b029227b49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9feab7d0183c320b5c0d8b029227b49d">&#9670;&#160;</a></span>addTriangleToGrid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::addTriangleToGrid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="structMaze_1_1Triangle.html">Triangle</a> &amp;&#160;</td>
+          <td class="paramname"><em>tri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a>&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a> &gt;(&amp;)&#160;</td>
+          <td class="paramname"><em>grid</em>[GRID_DIM][GRID_DIM]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab092d74739c408fe222fe3890f448966" name="ab092d74739c408fe222fe3890f448966"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab092d74739c408fe222fe3890f448966">&#9670;&#160;</a></span>barycentric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::barycentric </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> &amp;&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6046c3da731115da0e1f4a0352da02bb" name="a6046c3da731115da0e1f4a0352da02bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6046c3da731115da0e1f4a0352da02bb">&#9670;&#160;</a></span>buildSpatialGrid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::buildSpatialGrid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ce5f03152b12f3b33b1ceafb5e0d442" name="a7ce5f03152b12f3b33b1ceafb5e0d442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ce5f03152b12f3b33b1ceafb5e0d442">&#9670;&#160;</a></span>calculateBounds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::calculateBounds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b3dc0fced366c49f04573d96f5a34be" name="a9b3dc0fced366c49f04573d96f5a34be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b3dc0fced366c49f04573d96f5a34be">&#9670;&#160;</a></span>checkTriangleCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> Maze::checkTriangleCollision </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>sphereCenter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>sphereRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2f07e146c3201ec8852aa512801dc00" name="ab2f07e146c3201ec8852aa512801dc00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f07e146c3201ec8852aa512801dc00">&#9670;&#160;</a></span>checkWallCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> Maze::checkWallCollision </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>radius</em> = <code>1.0f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb001063b9cbbac58207f896c938775d" name="adb001063b9cbbac58207f896c938775d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb001063b9cbbac58207f896c938775d">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classShader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cf30635a64bbcac001a999668d4bab1" name="a6cf30635a64bbcac001a999668d4bab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf30635a64bbcac001a999668d4bab1">&#9670;&#160;</a></span>drawExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::drawExit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classShader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a207139fd3fd182f12bd3898d1c3fde4d" name="a207139fd3fd182f12bd3898d1c3fde4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a207139fd3fd182f12bd3898d1c3fde4d">&#9670;&#160;</a></span>getFloorHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Maze::getFloorHeight </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td>
+          <td class="paramname"><em>checkSlope</em> = <code><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa43a0474243e0514c5ebe14ce6b79c78" name="aa43a0474243e0514c5ebe14ce6b79c78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43a0474243e0514c5ebe14ce6b79c78">&#9670;&#160;</a></span>initExitMarker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::initExitMarker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae0536b465d319f91bf5e146cb1df0b1" name="aae0536b465d319f91bf5e146cb1df0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae0536b465d319f91bf5e146cb1df0b1">&#9670;&#160;</a></span>loadModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::loadModel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> std::string &amp;&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4690d2f7d00f0bb43738648006d4d9f4" name="a4690d2f7d00f0bb43738648006d4d9f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4690d2f7d00f0bb43738648006d4d9f4">&#9670;&#160;</a></span>setRandomStartAndExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::setRandomStartAndExit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12e79f4443b9774b0b0e51b44b834891" name="a12e79f4443b9774b0b0e51b44b834891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e79f4443b9774b0b0e51b44b834891">&#9670;&#160;</a></span>setupMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Maze::setupMesh </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentação dos dados membro</h2>
+<a id="a3450af84a5812d81bbc5124ebdb5bfc7" name="a3450af84a5812d81bbc5124ebdb5bfc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3450af84a5812d81bbc5124ebdb5bfc7">&#9670;&#160;</a></span>exitPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Maze::exitPosition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position of the exit gate. </p>
+
+</div>
+</div>
+<a id="a248588ab65bdd6cad23e7097d36c8e9e" name="a248588ab65bdd6cad23e7097d36c8e9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a248588ab65bdd6cad23e7097d36c8e9e">&#9670;&#160;</a></span>exitVAO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> Maze::exitVAO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a941d9d535285c2ec884e0518f7f5f8fb" name="a941d9d535285c2ec884e0518f7f5f8fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a941d9d535285c2ec884e0518f7f5f8fb">&#9670;&#160;</a></span>exitVBO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> Maze::exitVBO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>VAO/VBO for the exit marker. </p>
+
+</div>
+</div>
+<a id="a09310b4a7838f511440788b14928ff5d" name="a09310b4a7838f511440788b14928ff5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09310b4a7838f511440788b14928ff5d">&#9670;&#160;</a></span>floorTriangles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structMaze_1_1Triangle.html">Triangle</a>&gt; Maze::floorTriangles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of triangles classified as walkable floor. </p>
+
+</div>
+</div>
+<a id="a40c925047834f6188d9e5b4e203d4471" name="a40c925047834f6188d9e5b4e203d4471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c925047834f6188d9e5b4e203d4471">&#9670;&#160;</a></span>GRID_DIM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> Maze::GRID_DIM = 50</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f8ebcfea4dfa3b7522997634d066e0a" name="a3f8ebcfea4dfa3b7522997634d066e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8ebcfea4dfa3b7522997634d066e0a">&#9670;&#160;</a></span>maxBounds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Maze::maxBounds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum (x,y,z) of the maze bounding box. </p>
+
+</div>
+</div>
+<a id="aa1b1acf782eb7898d09942f566bb4c1e" name="aa1b1acf782eb7898d09942f566bb4c1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1b1acf782eb7898d09942f566bb4c1e">&#9670;&#160;</a></span>minBounds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Maze::minBounds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Minimum (x,y,z) of the maze bounding box. </p>
+
+</div>
+</div>
+<a id="a677ea92dc0c67be006936a7d2fd768e9" name="a677ea92dc0c67be006936a7d2fd768e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a677ea92dc0c67be006936a7d2fd768e9">&#9670;&#160;</a></span>modelSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Maze::modelSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diagonal size of the maze bounding box. </p>
+
+</div>
+</div>
+<a id="a53724e458be404c7316d5b0aeea825ee" name="a53724e458be404c7316d5b0aeea825ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53724e458be404c7316d5b0aeea825ee">&#9670;&#160;</a></span>startPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Maze::startPosition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculated starting position for the player. </p>
+
+</div>
+</div>
+<a id="aff2e73487404cfe2c3cb52b1a281a667" name="aff2e73487404cfe2c3cb52b1a281a667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff2e73487404cfe2c3cb52b1a281a667">&#9670;&#160;</a></span>VAO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> Maze::VAO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vertex Array Object for the maze. </p>
+
+</div>
+</div>
+<a id="a7057bfa2f2751a37b79b137f63cd46b6" name="a7057bfa2f2751a37b79b137f63cd46b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7057bfa2f2751a37b79b137f63cd46b6">&#9670;&#160;</a></span>VBO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> Maze::VBO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vertex Buffer Object for the maze. </p>
+
+</div>
+</div>
+<a id="a5bcbd9266a53906f02da573a936beb47" name="a5bcbd9266a53906f02da573a936beb47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bcbd9266a53906f02da573a936beb47">&#9670;&#160;</a></span>vertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&gt; Maze::vertices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interleaved vertex data (Position, Normal, TexCoords) </p>
+
+</div>
+</div>
+<a id="acd53bdf8d357d826dce5eb2c98b0725e" name="acd53bdf8d357d826dce5eb2c98b0725e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd53bdf8d357d826dce5eb2c98b0725e">&#9670;&#160;</a></span>wallTriangles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structMaze_1_1Triangle.html">Triangle</a>&gt; Maze::wallTriangles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of triangles classified as obstacles. </p>
+
+</div>
+</div>
+<a id="a44046097f0f064397a801efd38a8693b" name="a44046097f0f064397a801efd38a8693b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44046097f0f064397a801efd38a8693b">&#9670;&#160;</a></span>z_floorGrid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a>&gt; Maze::z_floorGrid[<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>][<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1b9ab5cf8a3b01ac403cc35ff024c20" name="ad1b9ab5cf8a3b01ac403cc35ff024c20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b9ab5cf8a3b01ac403cc35ff024c20">&#9670;&#160;</a></span>z_gridCellSizeX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Maze::z_gridCellSizeX = 1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a909bde6a5847087387654891140d9b04" name="a909bde6a5847087387654891140d9b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a909bde6a5847087387654891140d9b04">&#9670;&#160;</a></span>z_gridCellSizeZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Maze::z_gridCellSizeZ = 1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf16fe8425486390fd03ef4bfcc15f3b" name="adf16fe8425486390fd03ef4bfcc15f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf16fe8425486390fd03ef4bfcc15f3b">&#9670;&#160;</a></span>z_wallGrid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">size_t</a>&gt; Maze::z_wallGrid[<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>][<a class="el" href="classMaze.html#a40c925047834f6188d9e5b4e203d4471">GRID_DIM</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>A documentação para esta classe foi gerada a partir do seguinte ficheiro:<ul>
+<li>include/<a class="el" href="Maze_8h_source.html">Maze.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

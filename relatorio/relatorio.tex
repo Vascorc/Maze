@@ -1,0 +1,168 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{titlesec}
+
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=25mm,
+ top=25mm,
+ right=25mm,
+ bottom=25mm,
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    % Se tiver o logo da universidade, descomente a linha abaixo e coloque o ficheiro na pasta
+    \includegraphics[width=0.4\textwidth]{logo_universidade.png}
+    
+    \vspace{1.5cm}
+    
+    \Huge
+    \textbf{Computação Gráfica}
+    
+    \vspace{0.5cm}
+    \LARGE
+    Relatório do Projeto Final: Labirinto 3D
+    
+    \vspace{2.0cm}
+    
+    \textbf{Autores:}
+    \vspace{0.5cm}
+    \Large
+
+    Alexandre Santos n52011 \\
+    Vasco Colaco n52290 \\
+    
+    \vfill
+    
+    \Large
+    \textbf{Unidade Curricular:} Computação Gráfica \\
+    \textbf{Curso:} Licenciatura em Engenharia Informática
+    
+    \vspace{1.0cm}
+    
+    \Large
+    \today
+    
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introdução}
+Este relatório descreve o desenvolvimento do projeto final da unidade curricular de Computação Gráfica. O objetivo principal do trabalho foi a criação de uma aplicação gráfica interativa em 3D, utilizando a API OpenGL, que aplicasse os conhecimentos adquiridos ao longo do semestre.
+
+\subsection{O Jogo: Labirinto 3D}
+A aplicação desenvolvida consiste num jogo de exploração em primeira pessoa. O jogador é colocado num labirinto complexo e escuro, equipado apenas com uma lanterna. O objetivo é navegar pelos corredores, evitando obstáculos e encontrando o caminho correto até ao portão de saída.
+
+\subsection{Motivação}
+A escolha deste tema deveu-se ao interesse em compreender os fundamentos dos motores de jogo modernos (Game Engines). Implementar um sistema de câmaras, deteção de colisões e iluminação dinâmica "do zero" (utilizando apenas OpenGL e bibliotecas auxiliares básicas) permite uma compreensão profunda da pipeline gráfica e da matemática vetorial envolvida na renderização 3D.
+
+\section{Tecnologias Utilizadas}
+Para o desenvolvimento deste projeto, foram selecionadas tecnologias padrão na indústria e na comunidade de aprendizagem de Computação Gráfica:
+
+\begin{itemize}
+    \item \textbf{OpenGL (Core Profile 3.3)}: API gráfica principal utilizada para a renderização de primitivas, gestão de buffers e shaders.
+    \item \textbf{C++}: Linguagem de programação utilizada, escolhida pela sua performance e controlo sobre a gestão de memória.
+    \item \textbf{GLFW}: Biblioteca utilizada para a criação da janela, contexto de renderização e gestão de input (teclado e rato).
+    \item \textbf{GLAD}: Biblioteca para carregar os ponteiros das funções OpenGL em tempo de execução.
+    \item \textbf{GLM (OpenGL Mathematics)}: Biblioteca de matemática (header-only) compatível com GLSL, utilizada para operações com vetores e matrizes (transformações, projeções, câmara).
+    \item \textbf{stb\_image}: Biblioteca para carregamento de texturas (PNG, JPG).
+    \item \textbf{TinyOBJLoader}: Biblioteca para importação de modelos 3D no formato Wavefront (.obj).
+\end{itemize}
+
+\section{Desenvolvimento e Implementação}
+
+\subsection{Gestão do Projeto e Estrutura}
+O projeto foi estruturado de forma orientada a objetos para garantir a modularidade e a manutenibilidade do código. As principais funcionalidades foram encapsuladas em classes específicas.
+
+\subsection{Descrição das Classes e Módulos}
+
+\subsubsection{Main (main.cpp)}
+O ficheiro principal contém o ciclo de jogo (\textit{game loop}). É responsável por:
+\begin{itemize}
+    \item Inicializar o GLFW e GLAD.
+    \item Configurar os callbacks de input.
+    \item Gerir o cálculo do \texttt{deltaTime} para garantir movimentos independentes da taxa de frames.
+    \item Executar o loop de renderização e processamento logico.
+\end{itemize}
+
+\subsubsection{Câmara (Camera.h)}
+Implementa uma câmara FPS (\textit{First-Person Shooter}). Utiliza ângulos de Euler (Yaw e Pitch) para calcular o vetor diretor da câmara com base no movimento do rato. Processa também o input do teclado para mover a posição da câmara no mundo (W, A, S, D).
+
+\subsubsection{Maze (Maze.h)}
+Esta classe é responsável pela gestão do mundo do jogo.
+\begin{itemize}
+    \item \textbf{Carregamento do Nível}: Lê o ficheiro .obj do labirinto e separa os dados em vértices, normais e coordenadas de textura.
+    \item \textbf{Classificação de Superfícies}: Analisa a normal de cada triângulo para distinguir entre "chão" (normais a apontar para cima) e "paredes".
+    \item \textbf{Sistema de Colisões (Grid Espacial)}: Para otimizar a deteção de colisões, o mundo 3D é dividido numa grelha 2D (XZ). Cada celula da grelha armazena referências para os triângulos que a intersetam. Quando o jogador se move, o sistema verifica colisões apenas contra os triângulos nas células vizinhas, drasticamente reduzindo o custo computacional.
+\end{itemize}
+
+\subsubsection{Gestor de Shaders (Shader\_m.h e Ficheiros GLSL)}
+Foi criada uma classe para abstrair a compilação e linkagem dos shaders. O projeto utiliza vários shaders:
+\begin{itemize}
+    \item \textbf{Basic Lighting}: Implementa o modelo de iluminação (Phong/Blinn-Phong), texturização e a lógica da lanterna (Spotlight).
+    \item \textbf{Skybox}: Renderiza o cubo envolvente (céu).
+    \item \textbf{Overlay}: Renderiza imagens 2D sobre a cena 3D (GUI).
+\end{itemize}
+
+\subsection{Documentação (Doxygen)}
+O código fonte foi documentado utilizando comentários compatíveis com Doxygen. Foi gerada uma documentação HTML que descreve a hierarquia de classes, os métodos e as interdependências, facilitando a consulta técnica do projeto.
+
+\section{Conclusões}
+O desenvolvimento deste projeto permitiu consolidar os conhecimentos teóricos de Computação Gráfica.
+
+\textbf{Resultados Alcançados:}
+\begin{itemize}
+    \item Foi criado um ambiente 3D navegável com performance estável.
+    \item O sistema de carregamento de mapas é flexível, permitindo trocar o labirinto apenas alterando o ficheiro .obj.
+    \item A iluminação e as texturas conferem ao jogo a atmosfera desejada.
+    \item O sistema de colisões, embora simples, é robusto o suficiente para a jogabilidade proposta.
+\end{itemize}
+
+\textbf{Trabalho Futuro:}
+Como melhorias futuras, planeia-se:
+\begin{itemize}
+    \item Refinar o sistema de sombras (Shadow Mapping) para suportar sombras dinâmicas projetadas pela lanterna.
+    \item Implementar um menu inicial interativo.
+    \item Adicionar efeitos sonoros para passos e ambiente.
+\end{itemize}
+
+\section{Bibliografia}
+\renewcommand\refname{} % Remove o título automático se necessário
+\begin{thebibliography}{9}
+
+\bibitem{learnopengl}
+Joey de Vries,
+\textit{LearnOpenGL},
+\url{https://learnopengl.com/}.
+
+\bibitem{opengl-docs}
+Khronos Group,
+\textit{OpenGL 3.3 Reference Pages},
+\url{https://www.khronos.org/registry/OpenGL-Refpages/gl4/}.
+
+\bibitem{glm}
+G-Truc Creation,
+\textit{OpenGL Mathematics (GLM)},
+\url{https://glm.g-truc.net/0.9.9/index.html}.
+
+\bibitem{tinyobj}
+Syoyo Fujita,
+\textit{TinyObjLoader},
+\url{https://github.com/tinyobjloader/tinyobjloader}.
+
+\end{thebibliography}
+
+\end{document}

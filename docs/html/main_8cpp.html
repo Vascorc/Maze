@@ -1,0 +1,695 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Labirinto 3D: Referência ao ficheiro main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Labirinto 3D<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle"><div class="title">Referência ao ficheiro main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Main entry point for the 3D <a class="el" href="classMaze.html" title="Manages the 3D model of the maze, collision detection, and spatial partitioning.">Maze</a> Game.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="glad_8h_source.html">glad/glad.h</a>&gt;</code><br />
+<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &lt;glm/glm.hpp&gt;</code><br />
+<code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
+<code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
+<code>#include &lt;<a class="el" href="shader__m_8h_source.html">shader_m.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="camera_8h_source.html">camera.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="Maze_8h_source.html">Maze.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="Skybox_8h_source.html">Skybox.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="OverlayRenderer_8h_source.html">OverlayRenderer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="stb__image_8h_source.html">stb_image.h</a>&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a18372412ad2fc3ce1e3240b3cf0efe78" id="r_a18372412ad2fc3ce1e3240b3cf0efe78"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78">STB_IMAGE_IMPLEMENTATION</a></td></tr>
+<tr class="separator:a18372412ad2fc3ce1e3240b3cf0efe78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a5180f7bf2b71421af837035824a8c8ac" id="r_a5180f7bf2b71421af837035824a8c8ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5180f7bf2b71421af837035824a8c8ac">framebuffer_size_callback</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">window</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> <a class="el" href="glad_8h.html#a09012ea95ebbbe1c032db7c68b54291e">width</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> <a class="el" href="glad_8h.html#a456943498a720df0f4b62bafa5dad93c">height</a>)</td></tr>
+<tr class="memdesc:a5180f7bf2b71421af837035824a8c8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function when the window size changes.  <br /></td></tr>
+<tr class="separator:a5180f7bf2b71421af837035824a8c8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ca2891044ac10a664b8d83ce590f1f" id="r_af4ca2891044ac10a664b8d83ce590f1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af4ca2891044ac10a664b8d83ce590f1f">mouse_callback</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">window</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">xpos</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">ypos</a>)</td></tr>
+<tr class="memdesc:af4ca2891044ac10a664b8d83ce590f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for mouse movement.  <br /></td></tr>
+<tr class="separator:af4ca2891044ac10a664b8d83ce590f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ad2502008f16fbcf01dfaa7f7bc9ea" id="r_a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a06ad2502008f16fbcf01dfaa7f7bc9ea">scroll_callback</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">window</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a> <a class="el" href="glad_8h.html#ac20a0ffebf4c476650fcfa0633066f0e">xoffset</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a> <a class="el" href="glad_8h.html#a76dfb6803dcff61037ba688b7f4242b8">yoffset</a>)</td></tr>
+<tr class="memdesc:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for mouse scrolling.  <br /></td></tr>
+<tr class="separator:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abce7691b8ca290dc9047e978ba1aed1d" id="r_abce7691b8ca290dc9047e978ba1aed1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#abce7691b8ca290dc9047e978ba1aed1d">processInput</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">window</a>, <a class="el" href="classCamera.html">Camera</a> &amp;<a class="el" href="main_8cpp.html#a41be3d7fa862816d2d628a32c1ec05c0">camera</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="main_8cpp.html#a1a61318ed6aa02b4ff346e7eb8f68891">deltaTime</a>, <a class="el" href="classMaze.html">Maze</a> &amp;<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">maze</a>)</td></tr>
+<tr class="memdesc:abce7691b8ca290dc9047e978ba1aed1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes all input (keys) for the current frame.  <br /></td></tr>
+<tr class="separator:abce7691b8ca290dc9047e978ba1aed1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6edd6756ef8be254cacecdb2823ed6b9" id="r_a6edd6756ef8be254cacecdb2823ed6b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">glm::vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a6edd6756ef8be254cacecdb2823ed6b9">topLightPos</a> (0.0f, 50.0f, 0.0f)</td></tr>
+<tr class="separator:a6edd6756ef8be254cacecdb2823ed6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a74ba59acbf346c2b19bc1ce5170f755d" id="r_a74ba59acbf346c2b19bc1ce5170f755d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a74ba59acbf346c2b19bc1ce5170f755d">SCR_WIDTH</a> = 800</td></tr>
+<tr class="separator:a74ba59acbf346c2b19bc1ce5170f755d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca03a77ac5a7f2e26d08cd6de43f9a17" id="r_aca03a77ac5a7f2e26d08cd6de43f9a17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aca03a77ac5a7f2e26d08cd6de43f9a17">SCR_HEIGHT</a> = 600</td></tr>
+<tr class="separator:aca03a77ac5a7f2e26d08cd6de43f9a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41be3d7fa862816d2d628a32c1ec05c0" id="r_a41be3d7fa862816d2d628a32c1ec05c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCamera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a41be3d7fa862816d2d628a32c1ec05c0">camera</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">glm::vec3</a>(0.0f, 0.0f, 0.0f))</td></tr>
+<tr class="separator:a41be3d7fa862816d2d628a32c1ec05c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4664c5d930c290e6f82141a070cbea46" id="r_a4664c5d930c290e6f82141a070cbea46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4664c5d930c290e6f82141a070cbea46">lastX</a> = <a class="el" href="main_8cpp.html#a74ba59acbf346c2b19bc1ce5170f755d">SCR_WIDTH</a> / 2.0f</td></tr>
+<tr class="separator:a4664c5d930c290e6f82141a070cbea46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d5b8dfd025caf1c0ed043132515f587" id="r_a9d5b8dfd025caf1c0ed043132515f587"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9d5b8dfd025caf1c0ed043132515f587">lastY</a> = <a class="el" href="main_8cpp.html#aca03a77ac5a7f2e26d08cd6de43f9a17">SCR_HEIGHT</a> / 2.0f</td></tr>
+<tr class="separator:a9d5b8dfd025caf1c0ed043132515f587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21731ba101e28334c34543121caa841" id="r_ac21731ba101e28334c34543121caa841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac21731ba101e28334c34543121caa841">firstMouse</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></td></tr>
+<tr class="separator:ac21731ba101e28334c34543121caa841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc54c48140bc42a84f22850dfd2c94b" id="r_abbc54c48140bc42a84f22850dfd2c94b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#abbc54c48140bc42a84f22850dfd2c94b">noclip</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td></tr>
+<tr class="separator:abbc54c48140bc42a84f22850dfd2c94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce3654069adf62becc057ee5ae8c7d1" id="r_a5ce3654069adf62becc057ee5ae8c7d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5ce3654069adf62becc057ee5ae8c7d1">flashLightOn</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></td></tr>
+<tr class="separator:a5ce3654069adf62becc057ee5ae8c7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c3cb4d134852552e2a6a68a09d7419" id="r_a77c3cb4d134852552e2a6a68a09d7419"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a77c3cb4d134852552e2a6a68a09d7419">lightIntensity</a> = 1.0f</td></tr>
+<tr class="separator:a77c3cb4d134852552e2a6a68a09d7419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a61318ed6aa02b4ff346e7eb8f68891" id="r_a1a61318ed6aa02b4ff346e7eb8f68891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1a61318ed6aa02b4ff346e7eb8f68891">deltaTime</a> = 0.0f</td></tr>
+<tr class="separator:a1a61318ed6aa02b4ff346e7eb8f68891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518a497d888d805d5f368bbb91b54a6c" id="r_a518a497d888d805d5f368bbb91b54a6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a518a497d888d805d5f368bbb91b54a6c">lastFrame</a> = 0.0f</td></tr>
+<tr class="separator:a518a497d888d805d5f368bbb91b54a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf2d18d9a8396938ecf48c975f249e71" id="r_acf2d18d9a8396938ecf48c975f249e71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#acf2d18d9a8396938ecf48c975f249e71">isFullscreen</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td></tr>
+<tr class="separator:acf2d18d9a8396938ecf48c975f249e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b215bf0a76bbf31afb63590217e8cfd" id="r_a9b215bf0a76bbf31afb63590217e8cfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9b215bf0a76bbf31afb63590217e8cfd">savedXPos</a></td></tr>
+<tr class="separator:a9b215bf0a76bbf31afb63590217e8cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117437e9014110df1cfcf9af70fc8d34" id="r_a117437e9014110df1cfcf9af70fc8d34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a117437e9014110df1cfcf9af70fc8d34">savedYPos</a></td></tr>
+<tr class="separator:a117437e9014110df1cfcf9af70fc8d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa56dc8d869ae03a39dc68e0ca7b778e4" id="r_aa56dc8d869ae03a39dc68e0ca7b778e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa56dc8d869ae03a39dc68e0ca7b778e4">savedWidth</a></td></tr>
+<tr class="separator:aa56dc8d869ae03a39dc68e0ca7b778e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178ef3789b2365b9690de26edd487d20" id="r_a178ef3789b2365b9690de26edd487d20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a178ef3789b2365b9690de26edd487d20">savedHeight</a></td></tr>
+<tr class="separator:a178ef3789b2365b9690de26edd487d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48dd2ff12f9e21c3fb29ff4bc3f8d46b" id="r_a48dd2ff12f9e21c3fb29ff4bc3f8d46b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a48dd2ff12f9e21c3fb29ff4bc3f8d46b">victoryAchieved</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td></tr>
+<tr class="separator:a48dd2ff12f9e21c3fb29ff4bc3f8d46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f171a21e654f5f6f85c51568e5f3c2" id="r_a83f171a21e654f5f6f85c51568e5f3c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a83f171a21e654f5f6f85c51568e5f3c2">victoryTime</a> = 0.0f</td></tr>
+<tr class="separator:a83f171a21e654f5f6f85c51568e5f3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8523c325b33fe93fed87478418ab9aad" id="r_a8523c325b33fe93fed87478418ab9aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a8523c325b33fe93fed87478418ab9aad">showControls</a> = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td></tr>
+<tr class="separator:a8523c325b33fe93fed87478418ab9aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Main entry point for the 3D <a class="el" href="classMaze.html" title="Manages the 3D model of the maze, collision detection, and spatial partitioning.">Maze</a> Game. </p>
+<p>This file contains the main game loop, initialization code for OpenGL/GLFW, and input handling logic. It sets up the scene (maze, camera, lighting) and manages the rendering cycle.</p>
+<dl class="section author"><dt>Autor</dt><dd>Alexandre Santos </dd>
+<dd>
+Vasco Colaco </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>2025 </dd></dl>
+</div><h2 class="groupheader">Documentação das macros</h2>
+<a id="a18372412ad2fc3ce1e3240b3cf0efe78" name="a18372412ad2fc3ce1e3240b3cf0efe78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18372412ad2fc3ce1e3240b3cf0efe78">&#9670;&#160;</a></span>STB_IMAGE_IMPLEMENTATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">define</a> STB_IMAGE_IMPLEMENTATION</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="a5180f7bf2b71421af837035824a8c8ac" name="a5180f7bf2b71421af837035824a8c8ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5180f7bf2b71421af837035824a8c8ac">&#9670;&#160;</a></span>framebuffer_size_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> framebuffer_size_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function when the window size changes. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>The window that changed size. </td></tr>
+    <tr><td class="paramname">width</td><td>New width. </td></tr>
+    <tr><td class="paramname">height</td><td>New height. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4ca2891044ac10a664b8d83ce590f1f" name="af4ca2891044ac10a664b8d83ce590f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ca2891044ac10a664b8d83ce590f1f">&#9670;&#160;</a></span>mouse_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> mouse_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a>&#160;</td>
+          <td class="paramname"><em>xpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a>&#160;</td>
+          <td class="paramname"><em>ypos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function for mouse movement. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>The window receiving the event. </td></tr>
+    <tr><td class="paramname">xpos</td><td>Mouse X position. </td></tr>
+    <tr><td class="paramname">ypos</td><td>Mouse Y position. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abce7691b8ca290dc9047e978ba1aed1d" name="abce7691b8ca290dc9047e978ba1aed1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abce7691b8ca290dc9047e978ba1aed1d">&#9670;&#160;</a></span>processInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> processInput </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCamera.html">Camera</a> &amp;&#160;</td>
+          <td class="paramname"><em>camera</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMaze.html">Maze</a> &amp;&#160;</td>
+          <td class="paramname"><em>maze</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes all input (keys) for the current frame. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>The window. </td></tr>
+    <tr><td class="paramname">camera</td><td>The camera object to control. </td></tr>
+    <tr><td class="paramname">deltaTime</td><td>Time elapsed since last frame. </td></tr>
+    <tr><td class="paramname">maze</td><td>The maze object (for collision detection). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a06ad2502008f16fbcf01dfaa7f7bc9ea" name="a06ad2502008f16fbcf01dfaa7f7bc9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06ad2502008f16fbcf01dfaa7f7bc9ea">&#9670;&#160;</a></span>scroll_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> scroll_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">GLFWwindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a>&#160;</td>
+          <td class="paramname"><em>xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">double</a>&#160;</td>
+          <td class="paramname"><em>yoffset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function for mouse scrolling. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>The window receiving the event. </td></tr>
+    <tr><td class="paramname">xoffset</td><td>Scroll X offset. </td></tr>
+    <tr><td class="paramname">yoffset</td><td>Scroll Y offset. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6edd6756ef8be254cacecdb2823ed6b9" name="a6edd6756ef8be254cacecdb2823ed6b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6edd6756ef8be254cacecdb2823ed6b9">&#9670;&#160;</a></span>topLightPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">glm::vec3</a> topLightPos </td>
+          <td>(</td>
+          <td class="paramtype">0.&#160;</td>
+          <td class="paramname"><em>0f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">50.&#160;</td>
+          <td class="paramname"><em>0f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0.&#160;</td>
+          <td class="paramname"><em>0f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das variáveis</h2>
+<a id="a41be3d7fa862816d2d628a32c1ec05c0" name="a41be3d7fa862816d2d628a32c1ec05c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41be3d7fa862816d2d628a32c1ec05c0">&#9670;&#160;</a></span>camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCamera.html">Camera</a> camera(<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">glm::vec3</a>(0.0f, 0.0f, 0.0f)) </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">glm::vec3</a>(0.0f, 0.0f, 0.0f)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a61318ed6aa02b4ff346e7eb8f68891" name="a1a61318ed6aa02b4ff346e7eb8f68891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a61318ed6aa02b4ff346e7eb8f68891">&#9670;&#160;</a></span>deltaTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> deltaTime = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac21731ba101e28334c34543121caa841" name="ac21731ba101e28334c34543121caa841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac21731ba101e28334c34543121caa841">&#9670;&#160;</a></span>firstMouse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> firstMouse = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ce3654069adf62becc057ee5ae8c7d1" name="a5ce3654069adf62becc057ee5ae8c7d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce3654069adf62becc057ee5ae8c7d1">&#9670;&#160;</a></span>flashLightOn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> flashLightOn = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf2d18d9a8396938ecf48c975f249e71" name="acf2d18d9a8396938ecf48c975f249e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf2d18d9a8396938ecf48c975f249e71">&#9670;&#160;</a></span>isFullscreen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> isFullscreen = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a518a497d888d805d5f368bbb91b54a6c" name="a518a497d888d805d5f368bbb91b54a6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518a497d888d805d5f368bbb91b54a6c">&#9670;&#160;</a></span>lastFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> lastFrame = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4664c5d930c290e6f82141a070cbea46" name="a4664c5d930c290e6f82141a070cbea46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4664c5d930c290e6f82141a070cbea46">&#9670;&#160;</a></span>lastX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> lastX = <a class="el" href="main_8cpp.html#a74ba59acbf346c2b19bc1ce5170f755d">SCR_WIDTH</a> / 2.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d5b8dfd025caf1c0ed043132515f587" name="a9d5b8dfd025caf1c0ed043132515f587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d5b8dfd025caf1c0ed043132515f587">&#9670;&#160;</a></span>lastY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> lastY = <a class="el" href="main_8cpp.html#aca03a77ac5a7f2e26d08cd6de43f9a17">SCR_HEIGHT</a> / 2.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77c3cb4d134852552e2a6a68a09d7419" name="a77c3cb4d134852552e2a6a68a09d7419"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c3cb4d134852552e2a6a68a09d7419">&#9670;&#160;</a></span>lightIntensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> lightIntensity = 1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbc54c48140bc42a84f22850dfd2c94b" name="abbc54c48140bc42a84f22850dfd2c94b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc54c48140bc42a84f22850dfd2c94b">&#9670;&#160;</a></span>noclip</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> noclip = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a178ef3789b2365b9690de26edd487d20" name="a178ef3789b2365b9690de26edd487d20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a178ef3789b2365b9690de26edd487d20">&#9670;&#160;</a></span>savedHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> savedHeight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa56dc8d869ae03a39dc68e0ca7b778e4" name="aa56dc8d869ae03a39dc68e0ca7b778e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa56dc8d869ae03a39dc68e0ca7b778e4">&#9670;&#160;</a></span>savedWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> savedWidth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b215bf0a76bbf31afb63590217e8cfd" name="a9b215bf0a76bbf31afb63590217e8cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b215bf0a76bbf31afb63590217e8cfd">&#9670;&#160;</a></span>savedXPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> savedXPos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a117437e9014110df1cfcf9af70fc8d34" name="a117437e9014110df1cfcf9af70fc8d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117437e9014110df1cfcf9af70fc8d34">&#9670;&#160;</a></span>savedYPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> savedYPos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca03a77ac5a7f2e26d08cd6de43f9a17" name="aca03a77ac5a7f2e26d08cd6de43f9a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca03a77ac5a7f2e26d08cd6de43f9a17">&#9670;&#160;</a></span>SCR_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> SCR_HEIGHT = 600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74ba59acbf346c2b19bc1ce5170f755d" name="a74ba59acbf346c2b19bc1ce5170f755d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ba59acbf346c2b19bc1ce5170f755d">&#9670;&#160;</a></span>SCR_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">const</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">unsigned</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> SCR_WIDTH = 800</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8523c325b33fe93fed87478418ab9aad" name="a8523c325b33fe93fed87478418ab9aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8523c325b33fe93fed87478418ab9aad">&#9670;&#160;</a></span>showControls</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> showControls = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48dd2ff12f9e21c3fb29ff4bc3f8d46b" name="a48dd2ff12f9e21c3fb29ff4bc3f8d46b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48dd2ff12f9e21c3fb29ff4bc3f8d46b">&#9670;&#160;</a></span>victoryAchieved</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> victoryAchieved = <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">false</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83f171a21e654f5f6f85c51568e5f3c2" name="a83f171a21e654f5f6f85c51568e5f3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f171a21e654f5f6f85c51568e5f3c2">&#9670;&#160;</a></span>victoryTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> victoryTime = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

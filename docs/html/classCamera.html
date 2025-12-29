@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Labirinto 3D: Referência à classe Camera</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Labirinto 3D<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Membros públicos</a> &#124;
+<a href="#pub-attribs">Atributos Públicos</a> &#124;
+<a href="#pri-methods">Membros privados</a> &#124;
+<a href="classCamera-members.html">Mostrar lista completa dos membros</a>  </div>
+  <div class="headertitle"><div class="title">Referência à classe Camera</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class to handle a camera using Euler Angles.  
+ <a href="classCamera.html#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="camera_8h_source.html">camera.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Membros públicos</h2></td></tr>
+<tr class="memitem:a440d357330d01ce60bc47c9d65cc236c" id="r_a440d357330d01ce60bc47c9d65cc236c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a440d357330d01ce60bc47c9d65cc236c">Camera</a> (glm::vec3 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">position</a>=glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">up</a>=glm::vec3(0.0f, 1.0f, 0.0f), <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">yaw</a>=-90.0f, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">pitch</a>=0.0f)</td></tr>
+<tr class="memdesc:a440d357330d01ce60bc47c9d65cc236c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with vectors.  <br /></td></tr>
+<tr class="separator:a440d357330d01ce60bc47c9d65cc236c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa333055635aed96518c4c66be9a70c" id="r_affa333055635aed96518c4c66be9a70c"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#affa333055635aed96518c4c66be9a70c">GetViewMatrix</a> ()</td></tr>
+<tr class="memdesc:affa333055635aed96518c4c66be9a70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the view matrix calculated using Euler Angles and the LookAt Matrix.  <br /></td></tr>
+<tr class="separator:affa333055635aed96518c4c66be9a70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12cfcb1c3342281fb22058fcf1926b5" id="r_ad12cfcb1c3342281fb22058fcf1926b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad12cfcb1c3342281fb22058fcf1926b5">ProcessKeyboard</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">direction</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="main_8cpp.html#a1a61318ed6aa02b4ff346e7eb8f68891">deltaTime</a>)</td></tr>
+<tr class="memdesc:ad12cfcb1c3342281fb22058fcf1926b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes input received from any keyboard-like input system.  <br /></td></tr>
+<tr class="separator:ad12cfcb1c3342281fb22058fcf1926b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12293c3b3d9d162523c94afadb1c11c4" id="r_a12293c3b3d9d162523c94afadb1c11c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a12293c3b3d9d162523c94afadb1c11c4">ProcessMouseMovement</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#ac20a0ffebf4c476650fcfa0633066f0e">xoffset</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a76dfb6803dcff61037ba688b7f4242b8">yoffset</a>, <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a> <a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">constrainPitch</a>=<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a>)</td></tr>
+<tr class="memdesc:a12293c3b3d9d162523c94afadb1c11c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes input received from a mouse input system.  <br /></td></tr>
+<tr class="separator:a12293c3b3d9d162523c94afadb1c11c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d150f7dc98940d2dd62f686cc2efe3" id="r_a05d150f7dc98940d2dd62f686cc2efe3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a05d150f7dc98940d2dd62f686cc2efe3">ProcessMouseScroll</a> (<a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> <a class="el" href="glad_8h.html#a76dfb6803dcff61037ba688b7f4242b8">yoffset</a>)</td></tr>
+<tr class="memdesc:a05d150f7dc98940d2dd62f686cc2efe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes input received from a mouse scroll-wheel event.  <br /></td></tr>
+<tr class="separator:a05d150f7dc98940d2dd62f686cc2efe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos Públicos</h2></td></tr>
+<tr class="memitem:a9733b59f5340f6f1bca24d52a6679039" id="r_a9733b59f5340f6f1bca24d52a6679039"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a9733b59f5340f6f1bca24d52a6679039">Position</a></td></tr>
+<tr class="memdesc:a9733b59f5340f6f1bca24d52a6679039"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCamera.html" title="Class to handle a camera using Euler Angles.">Camera</a> position in world space.  <br /></td></tr>
+<tr class="separator:a9733b59f5340f6f1bca24d52a6679039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95b3737115ffe9a6ff9128344d5b963" id="r_ac95b3737115ffe9a6ff9128344d5b963"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ac95b3737115ffe9a6ff9128344d5b963">Front</a></td></tr>
+<tr class="memdesc:ac95b3737115ffe9a6ff9128344d5b963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector pointing to the front of the camera.  <br /></td></tr>
+<tr class="separator:ac95b3737115ffe9a6ff9128344d5b963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad74c4a490bc8865e67e27a2036d0a72d" id="r_ad74c4a490bc8865e67e27a2036d0a72d"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad74c4a490bc8865e67e27a2036d0a72d">Up</a></td></tr>
+<tr class="memdesc:ad74c4a490bc8865e67e27a2036d0a72d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector pointing up relative to the camera.  <br /></td></tr>
+<tr class="separator:ad74c4a490bc8865e67e27a2036d0a72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6624f9f4228f6299a3d4ccb81e28da0a" id="r_a6624f9f4228f6299a3d4ccb81e28da0a"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a6624f9f4228f6299a3d4ccb81e28da0a">Right</a></td></tr>
+<tr class="memdesc:a6624f9f4228f6299a3d4ccb81e28da0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector pointing to the right relative to the camera.  <br /></td></tr>
+<tr class="separator:a6624f9f4228f6299a3d4ccb81e28da0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340d30b833954b87fd016ce0e724c723" id="r_a340d30b833954b87fd016ce0e724c723"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a340d30b833954b87fd016ce0e724c723">WorldUp</a></td></tr>
+<tr class="memdesc:a340d30b833954b87fd016ce0e724c723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global up vector (usually 0,1,0)  <br /></td></tr>
+<tr class="separator:a340d30b833954b87fd016ce0e724c723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a1354a2bd2df7f18ef82924e671d241" id="r_a1a1354a2bd2df7f18ef82924e671d241"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a1a1354a2bd2df7f18ef82924e671d241">Yaw</a></td></tr>
+<tr class="memdesc:a1a1354a2bd2df7f18ef82924e671d241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yaw angle (horizontal rotation)  <br /></td></tr>
+<tr class="separator:a1a1354a2bd2df7f18ef82924e671d241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c8f223bb06bb74fc77c586545e7e67" id="r_af9c8f223bb06bb74fc77c586545e7e67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#af9c8f223bb06bb74fc77c586545e7e67">Pitch</a></td></tr>
+<tr class="memdesc:af9c8f223bb06bb74fc77c586545e7e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pitch angle (vertical rotation)  <br /></td></tr>
+<tr class="separator:af9c8f223bb06bb74fc77c586545e7e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63221392d762df6a74f45bc9d43a2f61" id="r_a63221392d762df6a74f45bc9d43a2f61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a63221392d762df6a74f45bc9d43a2f61">MovementSpeed</a></td></tr>
+<tr class="memdesc:a63221392d762df6a74f45bc9d43a2f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speed of camera movement.  <br /></td></tr>
+<tr class="separator:a63221392d762df6a74f45bc9d43a2f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73e88844b31d5111eeb76327dfbb2d68" id="r_a73e88844b31d5111eeb76327dfbb2d68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a73e88844b31d5111eeb76327dfbb2d68">MouseSensitivity</a></td></tr>
+<tr class="memdesc:a73e88844b31d5111eeb76327dfbb2d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sensitivity of mouse movement.  <br /></td></tr>
+<tr class="separator:a73e88844b31d5111eeb76327dfbb2d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2becf27d08eb7e6da9c597c73ea95b5d" id="r_a2becf27d08eb7e6da9c597c73ea95b5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a2becf27d08eb7e6da9c597c73ea95b5d">Zoom</a></td></tr>
+<tr class="memdesc:a2becf27d08eb7e6da9c597c73ea95b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Field of view (zoom level)  <br /></td></tr>
+<tr class="separator:a2becf27d08eb7e6da9c597c73ea95b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Membros privados</h2></td></tr>
+<tr class="memitem:ad424b8b92e580508caf21337b69b93fa" id="r_ad424b8b92e580508caf21337b69b93fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad424b8b92e580508caf21337b69b93fa">updateCameraVectors</a> ()</td></tr>
+<tr class="memdesc:ad424b8b92e580508caf21337b69b93fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the front vector from the <a class="el" href="classCamera.html" title="Class to handle a camera using Euler Angles.">Camera</a>'s (updated) Euler Angles.  <br /></td></tr>
+<tr class="separator:ad424b8b92e580508caf21337b69b93fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Class to handle a camera using Euler Angles. </p>
+<p>Defines a camera with position, orientation (using Euler angles), and capabilities to process keyboard and mouse input for movement (FPS style). </p>
+</div><h2 class="groupheader">Documentação dos Construtores &amp; Destrutor</h2>
+<a id="a440d357330d01ce60bc47c9d65cc236c" name="a440d357330d01ce60bc47c9d65cc236c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a440d357330d01ce60bc47c9d65cc236c">&#9670;&#160;</a></span>Camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera::Camera </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>position</em> = <code>glm::vec3(0.0f,&#160;0.0f,&#160;0.0f)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>up</em> = <code>glm::vec3(0.0f,&#160;1.0f,&#160;0.0f)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>yaw</em> = <code>-90.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>pitch</em> = <code>0.0f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with vectors. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Initial position of the camera. </td></tr>
+    <tr><td class="paramname">up</td><td>Global up vector. </td></tr>
+    <tr><td class="paramname">yaw</td><td>Initial yaw angle. </td></tr>
+    <tr><td class="paramname">pitch</td><td>Initial pitch angle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="affa333055635aed96518c4c66be9a70c" name="affa333055635aed96518c4c66be9a70c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa333055635aed96518c4c66be9a70c">&#9670;&#160;</a></span>GetViewMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 Camera::GetViewMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the view matrix calculated using Euler Angles and the LookAt Matrix. </p>
+<dl class="section return"><dt>Retorna</dt><dd>glm::mat4 The view matrix. </dd></dl>
+
+</div>
+</div>
+<a id="ad12cfcb1c3342281fb22058fcf1926b5" name="ad12cfcb1c3342281fb22058fcf1926b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12cfcb1c3342281fb22058fcf1926b5">&#9670;&#160;</a></span>ProcessKeyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Camera::ProcessKeyboard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">int</a>&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>deltaTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes input received from any keyboard-like input system. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Direction of movement (0=FORWARD, 1=BACKWARD, 2=LEFT, 3=RIGHT). </td></tr>
+    <tr><td class="paramname">deltaTime</td><td>Time between current frame and last frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a12293c3b3d9d162523c94afadb1c11c4" name="a12293c3b3d9d162523c94afadb1c11c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12293c3b3d9d162523c94afadb1c11c4">&#9670;&#160;</a></span>ProcessMouseMovement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Camera::ProcessMouseMovement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>yoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">bool</a>&#160;</td>
+          <td class="paramname"><em>constrainPitch</em> = <code><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">true</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes input received from a mouse input system. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xoffset</td><td>Offset value in x direction. </td></tr>
+    <tr><td class="paramname">yoffset</td><td>Offset value in y direction. </td></tr>
+    <tr><td class="paramname">constrainPitch</td><td>Whether to constrain the pitch value to prevent screen flipping. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05d150f7dc98940d2dd62f686cc2efe3" name="a05d150f7dc98940d2dd62f686cc2efe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d150f7dc98940d2dd62f686cc2efe3">&#9670;&#160;</a></span>ProcessMouseScroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Camera::ProcessMouseScroll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a>&#160;</td>
+          <td class="paramname"><em>yoffset</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes input received from a mouse scroll-wheel event. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">yoffset</td><td>Offset value of the scroll. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad424b8b92e580508caf21337b69b93fa" name="ad424b8b92e580508caf21337b69b93fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad424b8b92e580508caf21337b69b93fa">&#9670;&#160;</a></span>updateCameraVectors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a950fc91edb4504f62f1c577bf4727c29">void</a> Camera::updateCameraVectors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the front vector from the <a class="el" href="classCamera.html" title="Class to handle a camera using Euler Angles.">Camera</a>'s (updated) Euler Angles. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação dos dados membro</h2>
+<a id="ac95b3737115ffe9a6ff9128344d5b963" name="ac95b3737115ffe9a6ff9128344d5b963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95b3737115ffe9a6ff9128344d5b963">&#9670;&#160;</a></span>Front</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::Front</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector pointing to the front of the camera. </p>
+
+</div>
+</div>
+<a id="a73e88844b31d5111eeb76327dfbb2d68" name="a73e88844b31d5111eeb76327dfbb2d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e88844b31d5111eeb76327dfbb2d68">&#9670;&#160;</a></span>MouseSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Camera::MouseSensitivity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sensitivity of mouse movement. </p>
+
+</div>
+</div>
+<a id="a63221392d762df6a74f45bc9d43a2f61" name="a63221392d762df6a74f45bc9d43a2f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63221392d762df6a74f45bc9d43a2f61">&#9670;&#160;</a></span>MovementSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Camera::MovementSpeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Speed of camera movement. </p>
+
+</div>
+</div>
+<a id="af9c8f223bb06bb74fc77c586545e7e67" name="af9c8f223bb06bb74fc77c586545e7e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c8f223bb06bb74fc77c586545e7e67">&#9670;&#160;</a></span>Pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Camera::Pitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pitch angle (vertical rotation) </p>
+
+</div>
+</div>
+<a id="a9733b59f5340f6f1bca24d52a6679039" name="a9733b59f5340f6f1bca24d52a6679039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9733b59f5340f6f1bca24d52a6679039">&#9670;&#160;</a></span>Position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::Position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classCamera.html" title="Class to handle a camera using Euler Angles.">Camera</a> position in world space. </p>
+
+</div>
+</div>
+<a id="a6624f9f4228f6299a3d4ccb81e28da0a" name="a6624f9f4228f6299a3d4ccb81e28da0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6624f9f4228f6299a3d4ccb81e28da0a">&#9670;&#160;</a></span>Right</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::Right</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector pointing to the right relative to the camera. </p>
+
+</div>
+</div>
+<a id="ad74c4a490bc8865e67e27a2036d0a72d" name="ad74c4a490bc8865e67e27a2036d0a72d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad74c4a490bc8865e67e27a2036d0a72d">&#9670;&#160;</a></span>Up</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::Up</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector pointing up relative to the camera. </p>
+
+</div>
+</div>
+<a id="a340d30b833954b87fd016ce0e724c723" name="a340d30b833954b87fd016ce0e724c723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340d30b833954b87fd016ce0e724c723">&#9670;&#160;</a></span>WorldUp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Camera::WorldUp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Global up vector (usually 0,1,0) </p>
+
+</div>
+</div>
+<a id="a1a1354a2bd2df7f18ef82924e671d241" name="a1a1354a2bd2df7f18ef82924e671d241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a1354a2bd2df7f18ef82924e671d241">&#9670;&#160;</a></span>Yaw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Camera::Yaw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Yaw angle (horizontal rotation) </p>
+
+</div>
+</div>
+<a id="a2becf27d08eb7e6da9c597c73ea95b5d" name="a2becf27d08eb7e6da9c597c73ea95b5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2becf27d08eb7e6da9c597c73ea95b5d">&#9670;&#160;</a></span>Zoom</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="glad_8h.html#a92d0386e5c19fb81ea88c9f99644ab1d">float</a> Camera::Zoom</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Field of view (zoom level) </p>
+
+</div>
+</div>
+<hr/>A documentação para esta classe foi gerada a partir do seguinte ficheiro:<ul>
+<li>include/<a class="el" href="camera_8h_source.html">camera.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
