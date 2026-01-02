@@ -1,13 +1,40 @@
 /**
+ * \mainpage Documentação do Projeto Labirinto 3D
+ *
+ * \section intro_sec Introdução
+ *
+ * Este projeto é um jogo de labirinto 3D desenvolvido em C++ usando OpenGL e GLFW.
+ * O objetivo do jogo é encontrar a saída do labirinto enquanto navega por corredores texturizados com iluminação dinâmica.
+ *
+ * \section features_sec Funcionalidades Principais
+ *
+ * - **Renderização 3D**: Utiliza OpenGL para renderizar o labirinto, chão, skybox e sobreposições.
+ * - **Câmara FPS**: Movimentação livre em primeira pessoa com suporte a rato e teclado.
+ * - **Sistema de Colisões**: Implementação robusta de colisões com paredes e deteção de chão/terreno.
+ * - **Iluminação**: Suporte para iluminação ambiente, difusa e especular, incluindo uma lanterna (spotlight).
+ * - **Texturas**: Suporte para texturas em paredes, chão, objetos e skybox.
+ * - **Interface**: Sobreposições gráficas para condições de vitória e controlos.
+ *
+ * \section install_sec Instalação e Execução
+ *
+ * O projeto requer bibliotecas OpenGL, GLFW, GLAD, GLM e STB Image.
+ * Compile usando o Makefile fornecido ou CMake.
+ *
+ * \author Alexandre Santos
+ * \author Vasco Colaço
+ * \date 2025
+ */
+
+/**
  * @file main.cpp
- * @brief Main entry point for the 3D Maze Game.
+ * @brief Ponto de entrada principal para o Jogo Labirinto 3D.
  * 
- * This file contains the main game loop, initialization code for OpenGL/GLFW,
- * and input handling logic. It sets up the scene (maze, camera, lighting) and
- * manages the rendering cycle.
+ * Este ficheiro contém o loop principal do jogo, código de inicialização para OpenGL/GLFW,
+ * e lógica de gestão de entrada. Configura a cena (labirinto, câmara, iluminação) e
+ * gere o ciclo de renderização.
  * 
  * @author Alexandre Santos
- * @author Vasco Colaco
+ * @author Vasco Colaço
  * @date 2025
  */
 
@@ -31,35 +58,35 @@
 
 // Protótipos de funções
 /**
- * @brief Callback function when the window size changes.
- * @param window The window that changed size.
- * @param width New width.
- * @param height New height.
+ * @brief Função de callback quando o tamanho da janela muda.
+ * @param window A janela que mudou de tamanho.
+ * @param width Nova largura.
+ * @param height Nova altura.
  */
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
 /**
- * @brief Callback function for mouse movement.
- * @param window The window receiving the event.
- * @param xpos Mouse X position.
- * @param ypos Mouse Y position.
+ * @brief Função de callback para movimento do rato.
+ * @param window A janela que recebe o evento.
+ * @param xpos Posição X do rato.
+ * @param ypos Posição Y do rato.
  */
 void mouse_callback(GLFWwindow *window, double xpos, double ypos);
 
 /**
- * @brief Callback function for mouse scrolling.
- * @param window The window receiving the event.
- * @param xoffset Scroll X offset.
- * @param yoffset Scroll Y offset.
+ * @brief Função de callback para scroll do rato.
+ * @param window A janela que recebe o evento.
+ * @param xoffset Offset de scroll X.
+ * @param yoffset Offset de scroll Y.
  */
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
 
 /**
- * @brief Processes all input (keys) for the current frame.
- * @param window The window.
- * @param camera The camera object to control.
- * @param deltaTime Time elapsed since last frame.
- * @param maze The maze object (for collision detection).
+ * @brief Processa toda a entrada (teclas) para o frame atual.
+ * @param window A janela.
+ * @param camera O objeto câmara para controlar.
+ * @param deltaTime Tempo decorrido desde o último frame.
+ * @param maze O objeto labirinto (para deteção de colisões).
  */
 void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maze);
 
@@ -294,7 +321,7 @@ int main()
         lightingShader.setFloat("lightIntensity", lightIntensity);
         lightingShader.setVec3("topLightPos", topLightPos);
         
-        // Bind textures
+        // Ativar texturas
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, wallTexture);
         lightingShader.setInt("wallTexture", 0);
@@ -319,11 +346,11 @@ int main()
         lightingShader.setFloat("flashLightOuterCutoff", glm::cos(glm::radians(17.5f)));
         lightingShader.setBool("flashLightOn", flashLightOn);
 
-        // Draw Maze (Type 0)
+        // Desenhar Labirinto (Tipo 0)
         lightingShader.setInt("objectType", 0);
         maze.draw(lightingShader);
 
-        // Draw Exit (Type 1)
+        // Desenhar Saida (Tipo 1)
         lightingShader.setInt("objectType", 1);
         maze.drawExit(lightingShader);
 
@@ -372,7 +399,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS) {
         if (!vPressed) {
             noclip = !noclip;
-            std::cout << "Noclip: " << (noclip ? "ON" : "OFF") << std::endl;
+            std::cout << "Noclip: " << (noclip ? "LIGADO" : "DESLIGADO") << std::endl;
             vPressed = true;
         }
     } else {
@@ -431,8 +458,8 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         camera.MovementSpeed *= 1.5f;
     }
 
-    // Physics Sub-stepping
-    int steps = 8; // Increased to prevent tunneling
+    // Sub-steps de física
+    int steps = 8; // Aumentado para prevenir tunneling
     float subDeltaTime = deltaTime / steps;
     
     for (int i = 0; i < steps; i++) {
@@ -458,7 +485,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
             float oldFloorHeight = maze.getFloorHeight(stepOldPosition);
             float newFloorHeight = maze.getFloorHeight(camera.Position);
             
-            // Revert if invalid floor (void)
+            // Reverter se for um chão inválido (void)
             if (newFloorHeight < -90000.0f) {
                  camera.Position = stepOldPosition;
                  newFloorHeight = oldFloorHeight;
@@ -466,7 +493,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
                 const float MAX_STEP_HEIGHT = 15.0f;
                 float heightDiff = newFloorHeight - oldFloorHeight;
                 
-                // Revert if Step is too high
+                // Reverter se o degrau for muito alto
                 if (heightDiff > MAX_STEP_HEIGHT) {
                     camera.Position.x = stepOldPosition.x;
                     camera.Position.z = stepOldPosition.z;
@@ -474,7 +501,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
                 }
             }
             
-            // Apply height
+            // Aplicar altura
             if (newFloorHeight > -90000.0f) {
                  camera.Position.y = newFloorHeight + 50.0f;
             }
@@ -483,9 +510,9 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
 
     camera.MovementSpeed = originalSpeed;
     
-    // Failsafe: If player fell through map, reset to start
+    // À prova de falhas: Se o jogador cair do mapa, reiniciar no início
     if (camera.Position.y < -300.0f) {
-        std::cout << "Failsafe triggered! Resetting player." << std::endl;
+        std::cout << "Failsafe ativado! A reiniciar jogador." << std::endl;
         camera.Position = maze.startPosition;
         camera.Position.y += 50.0f;
     }
@@ -527,8 +554,6 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
-
-
 
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {

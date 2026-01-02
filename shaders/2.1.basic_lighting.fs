@@ -13,9 +13,9 @@ uniform vec3 objectColor;
 uniform sampler2D wallTexture;
 uniform sampler2D floorTexture;
 uniform sampler2D gateTexture;
-uniform int objectType; // 0 = Maze, 1 = Gate
+uniform int objectType; // 0 = Labirinto, 1 = Portão
 
-// Flashlight uniforms
+// Uniformes da Lanterna
 uniform vec3 viewPos;
 uniform vec3 flashLightDir;
 uniform float flashLightCutoff;
@@ -25,14 +25,14 @@ uniform bool flashLightOn;
 void main(){
     vec3 topLightColor = vec3(1.0, 1.0, 0.8);
 
-    // Initial color from texture
+    // Cor inicial da textura
     vec3 texColor;
     
     if (objectType == 1) {
-        // Gate
+        // Portão
         texColor = texture(gateTexture, TexCoords).rgb;
     } else {
-        // Maze (Walls/Floor)
+        // Labirinto (Paredes/Chão)
         if (Normal.y > 0.5) {
             texColor = texture(floorTexture, TexCoords).rgb;
         } else {
@@ -40,38 +40,38 @@ void main(){
         }
     }
     
-    // Ambient (increased for debugging dark walls)
+    // Ambiente (aumentado para depuração de paredes escuras)
     float ambientStrength = 0.1;
     vec3 ambient = ambientStrength * topLightColor;
 
-    // Diffuse (Top Light) - using abs() to work with inverted normals
+    // Difusa (Luz Superior) - usando abs() para funcionar com normais invertidas
     vec3 norm = normalize(Normal);
     vec3 lightDir = normalize(topLightPos - FragPos);
     float diff = abs(dot(norm, lightDir));
     vec3 diffuse = diff * topLightColor * lightIntensity;
 
-    // Flashlight (Spotlight)
+    // Lanterna (Spotlight)
     vec3 flashlight = vec3(0.0);
     if(flashLightOn) {
-        // Direction from fragment to camera (light source)
+        // Direção do fragmento para a câmara (fonte de luz)
         vec3 lightDirFlash = normalize(viewPos - FragPos);
         
-        // Spotlight cone check (using -flashLightDir as it was working before)
+        // Verificação do cone da spotlight (usando -flashLightDir como estava a funcionar antes)
         float theta = dot(lightDirFlash, normalize(-flashLightDir));
         
-        // Smooth falloff at cone edges
+        // Suavização nas bordas do cone
         float epsilon = flashLightCutoff - flashLightOuterCutoff;
         float intensity = clamp((theta - flashLightOuterCutoff) / epsilon, 0.0, 1.0);
         
         if(theta > flashLightOuterCutoff) {
-            // Use abs() to make light work on both sides of surfaces (fixes inverted normals)
+            // Usar abs() para fazer a luz funcionar em ambos os lados das superfícies (corrige normais invertidas)
             float diffFlash = abs(dot(norm, lightDirFlash));
             flashlight = vec3(1.0, 1.0, 1.0) * diffFlash * intensity * 2.0;
         }
     }
 
-    // Multiply lighting with texture color instead of objectColor (or mix them)
-    // Using texColor directly gives better texture visibility
+    // Multiplicar iluminação com cor da textura
+    // Usar texColor diretamente dá melhor visibilidade da textura
     vec3 result = (ambient + diffuse + flashlight) * texColor;
     FragColor = vec4(result, 1.0);
 }

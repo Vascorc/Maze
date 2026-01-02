@@ -56,7 +56,7 @@ public:
         float scrAspect = scrWidth / scrHeight;
         glm::vec2 scale(1.0f);
         
-        // Fit logic: Manter aspect ratio da imagem dentro do ecrã
+        // Lógica de ajuste: Manter aspect ratio da imagem dentro do ecrã
         if (scrAspect > imgAspect) {
             // Ecrã mais largo que a imagem (barras laterais)
             scale.x = imgAspect / scrAspect;

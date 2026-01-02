@@ -23,7 +23,7 @@ public:
         glDepthFunc(GL_LEQUAL);
         shader.use();
         
-        // Convert view matrix to mat3 to remove translation (so skybox stays around player)
+        // Converter matriz de visualização para mat3 para remover translação (assim o skybox fica em torno do jogador)
         glm::mat4 skyboxView = glm::mat4(glm::mat3(view));
         
         shader.setMat4("view", skyboxView);
@@ -40,7 +40,7 @@ public:
 private:
     void setupMesh() {
         float skyboxVertices[] = {
-            // positions          
+            // posições          
             -1.0f,  1.0f, -1.0f,
             -1.0f, -1.0f, -1.0f,
              1.0f, -1.0f, -1.0f,
@@ -73,14 +73,14 @@ private:
              1.0f,  1.0f, -1.0f,
              1.0f,  1.0f,  1.0f,
              1.0f,  1.0f,  1.0f,
-            -1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
             -1.0f,  1.0f, -1.0f,
 
             -1.0f, -1.0f, -1.0f,
             -1.0f, -1.0f,  1.0f,
              1.0f, -1.0f, -1.0f,
              1.0f, -1.0f, -1.0f,
-            -1.0f, -1.0f,  1.0f,
+             1.0f, -1.0f,  1.0f,
              1.0f, -1.0f,  1.0f
         };
 
@@ -115,7 +115,7 @@ private:
             }
             else
             {
-                std::cout << "Cubemap load failed at: " << faces[i] << std::endl;
+                std::cout << "Falha ao carregar Cubemap em: " << faces[i] << std::endl;
                 stbi_image_free(data);
             }
         }

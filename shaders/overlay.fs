@@ -18,22 +18,22 @@ void main()
         // Calcular luminancia (brilho) do pixel
         float luminance = dot(texColor.rgb, vec3(0.299, 0.587, 0.114));
         
-        // Multiplicar cor pelo overlayColor para tint
+        // Multiplicar cor pelo overlayColor para tingir
         vec3 finalColor = texColor.rgb * overlayColor;
         
         // Usar luminancia como alpha - pixels pretos ficam transparentes
         FragColor = vec4(finalColor, luminance * alpha);
     } else {
         // Modo overlay animado (vitória)
-        // Create a vignette effect - darker at edges, brighter in center
+        // Criar efeito de vinheta - mais escuro nas bordas, mais brilhante no centro
         vec2 center = vec2(0.5, 0.5);
         float dist = distance(TexCoord, center);
         float vignette = smoothstep(0.8, 0.3, dist);
         
-        // Pulsing effect based on time
+        // Efeito de pulsação baseado no tempo
         float pulse = sin(time * 2.0) * 0.2 + 0.8;
         
-        // Radial wave effect
+        // Efeito de onda radial
         float wave = sin(dist * 10.0 - time * 3.0) * 0.1 + 0.9;
         
         vec3 finalColor = overlayColor * vignette * pulse * wave;

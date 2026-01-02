@@ -14,7 +14,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <tiny_obj_loader.h>
 
-// Helper to check if a point is in triangle (2D XZ)
+// Auxiliar para verificar se um ponto está no triângulo (2D XZ)
 bool isPointInTriangle(glm::vec2 p, glm::vec2 a, glm::vec2 b, glm::vec2 c) {
     glm::vec2 v0 = b - a, v1 = c - a, v2 = p - a;
     float d00 = glm::dot(v0, v0);
@@ -32,43 +32,43 @@ bool isPointInTriangle(glm::vec2 p, glm::vec2 a, glm::vec2 b, glm::vec2 c) {
 
 /**
  * @class Maze
- * @brief Manages the 3D model of the maze, collision detection, and spatial partitioning.
+ * @brief Gere o modelo 3D do labirinto, deteção de colisões e particionamento espacial.
  * 
- * This class handles loading the maze (OBJ file), classifying triangles as floor or walls,
- * and organizing them into a spatial grid (Spatial Hashing) for efficient collision detection.
+ * Esta classe lida com o carregamento do labirinto (ficheiro OBJ), classificando triângulos como chão ou paredes,
+ * e organizando-os numa grelha espacial (Spatial Hashing) para deteção de colisões eficiente.
  */
 class Maze {
 public:
-    unsigned int VAO;   ///< Vertex Array Object for the maze
-    unsigned int VBO;   ///< Vertex Buffer Object for the maze
-    unsigned int exitVAO, exitVBO; ///< VAO/VBO for the exit marker
+    unsigned int VAO;   ///< Vertex Array Object para o labirinto
+    unsigned int VBO;   ///< Vertex Buffer Object para o labirinto
+    unsigned int exitVAO, exitVBO; ///< VAO/VBO para o marcador de saída
     
-    std::vector<float> vertices; ///< Interleaved vertex data (Position, Normal, TexCoords)
+    std::vector<float> vertices; ///< Dados de vértices intercalados (Posição, Normal, TexCoords)
     
     /**
      * @struct Triangle
-     * @brief Represents a triangle in the maze geometry.
+     * @brief Representa um triângulo na geometria do labirinto.
      */
     struct Triangle {
-        glm::vec3 v0, v1, v2;   ///< Vertices of the triangle
-        glm::vec3 normal;       ///< Normal vector of the triangle
-        glm::vec3 centroid;     ///< Centroid (center point) of the triangle
+        glm::vec3 v0, v1, v2;   ///< Vértices do triângulo
+        glm::vec3 normal;       ///< Vetor normal do triângulo
+        glm::vec3 centroid;     ///< Centroide (ponto central) do triângulo
     };
 
-    std::vector<Triangle> floorTriangles;   ///< List of triangles classified as walkable floor
-    std::vector<Triangle> wallTriangles;    ///< List of triangles classified as obstacles
+    std::vector<Triangle> floorTriangles;   ///< Lista de triângulos classificados como chão navegável
+    std::vector<Triangle> wallTriangles;    ///< Lista de triângulos classificados como obstáculos
 
-    glm::vec3 startPosition;    ///< Calculated starting position for the player
-    glm::vec3 exitPosition;     ///< Position of the exit gate
-    float modelSize;            ///< Diagonal size of the maze bounding box
+    glm::vec3 startPosition;    ///< Posição inicial calculada para o jogador
+    glm::vec3 exitPosition;     ///< Posição do portão de saída
+    float modelSize;            ///< Tamanho diagonal da caixa delimitadora do labirinto
     
-    glm::vec3 minBounds;        ///< Minimum (x,y,z) of the maze bounding box
-    glm::vec3 maxBounds;        ///< Maximum (x,y,z) of the maze bounding box
+    glm::vec3 minBounds;        ///< Mínimo (x,y,z) da caixa delimitadora do labirinto
+    glm::vec3 maxBounds;        ///< Máximo (x,y,z) da caixa delimitadora do labirinto
 
     /**
-     * @brief Constructor that loads and processes the maze model.
+     * @brief Construtor que carrega e processa o modelo do labirinto.
      * 
-     * @param filepath Path to the .obj file.
+     * @param filepath Caminho para o ficheiro .obj.
      */
     Maze(const std::string& filepath) {
         loadModel(filepath);
@@ -157,8 +157,8 @@ public:
                     vertices.push_back(faceNormal.y);
                     vertices.push_back(faceNormal.z);
 
-                    // UV mapping basico
-                    float scale = 0.01f; // Updated to 0.01f to fix tiling
+                    // UV mapping básico
+                    float scale = 0.01f; // Atualizado para 0.01f para corrigir o tiling
                     if (isFloor) {
                         vertices.push_back(vx * scale);
                         vertices.push_back(vz * scale);
@@ -276,8 +276,8 @@ public:
              0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
              0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
              0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
+             -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
+             -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
         };
 
         glGenVertexArrays(1, &exitVAO);
@@ -303,7 +303,7 @@ public:
         float maxY = std::numeric_limits<float>::lowest();
         float maxZ = std::numeric_limits<float>::lowest();
 
-        for (size_t i = 0; i < vertices.size(); i += 8) { // Updated to stride 8
+        for (size_t i = 0; i < vertices.size(); i += 8) { // Atualizado para stride 8
             float x = vertices[i];
             float y = vertices[i+1];
             float z = vertices[i+2];
@@ -320,7 +320,7 @@ public:
         maxBounds = glm::vec3(maxX, maxY, maxZ);
         modelSize = glm::distance(minBounds, maxBounds);
 
-        // Expand bounds to include floor area (addFloor uses 100.0f expansion)
+        // Expandir limites para incluir área do chão (addFloor usa 100.0f de expansão)
         float floorExpand = 100.0f;
         minBounds.x -= floorExpand;
         minBounds.z -= floorExpand;
@@ -331,7 +331,7 @@ public:
     void draw(Shader& shader) {
         // shader.setVec3("objectColor", 0.7f, 0.7f, 0.7f); 
         glBindVertexArray(VAO);
-        // Divide by 8 now instead of 6 or just use vertices.size() / 8
+        // Dividir por 8 agora em vez de 6 ou usar apenas vertices.size() / 8
         glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 8);
     }
 
@@ -371,7 +371,7 @@ public:
         std::cout << "Saida: " << exitPosition.x << " " << exitPosition.y << " " << exitPosition.z << std::endl;
     }
 
-    // Spatial Grid Constants and Members
+    // Constantes e Membros da Grelha Espacial
     static const int GRID_DIM = 50;
     std::vector<size_t> z_wallGrid[GRID_DIM][GRID_DIM];
     std::vector<size_t> z_floorGrid[GRID_DIM][GRID_DIM];
@@ -387,12 +387,12 @@ public:
         z_gridCellSizeX = width / GRID_DIM;
         z_gridCellSizeZ = depth / GRID_DIM;
         
-        // Populate Wall Grid
+        // Preencher Grelha de Paredes
         for(size_t i = 0; i < wallTriangles.size(); i++) {
              addTriangleToGrid(wallTriangles[i], i, z_wallGrid);
         }
         
-        // Populate Floor Grid
+        // Preencher Grelha de Chão
         for(size_t i = 0; i < floorTriangles.size(); i++) {
              addTriangleToGrid(floorTriangles[i], i, z_floorGrid);
         }
@@ -409,7 +409,7 @@ public:
          int startZ = (int)((minZ - minBounds.z) / z_gridCellSizeZ);
          int endZ   = (int)((maxZ - minBounds.z) / z_gridCellSizeZ);
          
-         // Clamp indices
+         // Limitar indices (Clamp)
          startX = std::max(0, std::min(GRID_DIM-1, startX));
          endX   = std::max(0, std::min(GRID_DIM-1, endX));
          startZ = std::max(0, std::min(GRID_DIM-1, startZ));
@@ -434,7 +434,7 @@ public:
         bool found = false;
         const float MAX_WALKABLE_SLOPE = 0.5f;
 
-        // Check 3x3 neighborhood
+        // Verificar vizinhança 3x3
         int range = 1;
 
         for(int x = gx - range; x <= gx + range; x++) {
@@ -472,7 +472,7 @@ public:
         int gx = (int)((position.x - minBounds.x) / z_gridCellSizeX);
         int gz = (int)((position.z - minBounds.z) / z_gridCellSizeZ);
         
-        // Dynamic range based on radius to ensure we check all relevant cells
+        // Intervalo dinâmico baseado no raio para garantir que verificamos todas as células relevantes
         int rangeX = (int)(radius / z_gridCellSizeX) + 1;
         int rangeZ = (int)(radius / z_gridCellSizeZ) + 1;
         
@@ -523,7 +523,7 @@ private:
         float s = (uv * wv - vv * wu) / D;
         float t = (uv * wu - uu * wv) / D;
         
-        // Use a small epsilon to prevent slipping through cracks between triangles
+        // Usar um pequeno epsilon para evitar passar pelas frestas entre triângulos
         float epsilon = -0.01f; 
         return (s >= epsilon && t >= epsilon && (s + t) <= 1.0f - epsilon);
     }
