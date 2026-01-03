@@ -352,7 +352,7 @@ int main()
 
         // Desenhar Saida (Tipo 1)
         lightingShader.setInt("objectType", 1);
-        maze.drawExit(lightingShader);
+        // maze.drawExit(lightingShader);
 
         // Ecrã de vitória
         if (victoryAchieved) {
@@ -521,7 +521,7 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     if (!victoryAchieved) {
         glm::vec2 cameraPos2D(camera.Position.x, camera.Position.z);
         glm::vec2 exitPos2D(maze.exitPosition.x, maze.exitPosition.z);
-        if (glm::distance(cameraPos2D, exitPos2D) < 10.0f) {
+        if (glm::distance(cameraPos2D, exitPos2D) < 50.0f) {
             std::cout << "========================================" << std::endl;
             std::cout << "   PARABENS! CHEGASTE AO PORTAO!" << std::endl;
             std::cout << "   Pressiona ESC para sair" << std::endl;
