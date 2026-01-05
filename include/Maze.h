@@ -372,7 +372,7 @@ public:
     }
 
     // Constantes e Membros da Grelha Espacial
-    static const int GRID_DIM = 50;
+    static const int GRID_DIM = 128;
     std::vector<size_t> z_wallGrid[GRID_DIM][GRID_DIM];
     std::vector<size_t> z_floorGrid[GRID_DIM][GRID_DIM];
     float z_gridCellSizeX = 1.0f;

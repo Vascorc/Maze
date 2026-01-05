@@ -459,11 +459,19 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
     }
 
     // Sub-steps de física
-    int steps = 8; // Aumentado para prevenir tunneling
+    int steps = 4; // Reduzido de 8 para 4 para melhor performance
     float subDeltaTime = deltaTime / steps;
     
+    // Cache da altura inicial para evitar chamadas redundantes (Otimizacao)
+    float currentFloorHeight = -99999.0f;
+    if (!noclip) {
+        currentFloorHeight = maze.getFloorHeight(camera.Position);
+        if (currentFloorHeight < -90000.0f) currentFloorHeight = camera.Position.y - 50.0f;
+    }
+
     for (int i = 0; i < steps; i++) {
         glm::vec3 stepOldPosition = camera.Position;
+        float oldFloorHeight = currentFloorHeight;
         
         // Movimento WASD
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
@@ -475,35 +483,32 @@ void processInput(GLFWwindow *window, Camera &camera, float deltaTime, Maze &maz
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
             camera.ProcessKeyboard(3, subDeltaTime);
             
-        // Colisão com paredes
-        if (!noclip && maze.checkWallCollision(camera.Position, 5.0f)) {
-            camera.Position = stepOldPosition;
-        }
-        
-        // Gravidade e seguimento do terreno
+        // Logica de colisao e chao
         if (!noclip) {
-            float oldFloorHeight = maze.getFloorHeight(stepOldPosition);
-            float newFloorHeight = maze.getFloorHeight(camera.Position);
-            
-            // Reverter se for um chão inválido (void)
-            if (newFloorHeight < -90000.0f) {
-                 camera.Position = stepOldPosition;
-                 newFloorHeight = oldFloorHeight;
+            // 1. Parede
+            if (maze.checkWallCollision(camera.Position, 5.0f)) {
+                camera.Position = stepOldPosition;
             } else {
-                const float MAX_STEP_HEIGHT = 15.0f;
-                float heightDiff = newFloorHeight - oldFloorHeight;
+                // 2. Chao (So calcula se nao bateu na parede)
+                float newFloorHeight = maze.getFloorHeight(camera.Position);
                 
-                // Reverter se o degrau for muito alto
-                if (heightDiff > MAX_STEP_HEIGHT) {
-                    camera.Position.x = stepOldPosition.x;
-                    camera.Position.z = stepOldPosition.z;
-                    newFloorHeight = oldFloorHeight;
+                // Se chao invalido (buraco/void)
+                if (newFloorHeight < -90000.0f) {
+                     camera.Position = stepOldPosition;
+                } else {
+                    const float MAX_STEP_HEIGHT = 15.0f;
+                    float heightDiff = newFloorHeight - oldFloorHeight;
+                    
+                    if (heightDiff > MAX_STEP_HEIGHT) {
+                        // Degrau muito alto
+                        camera.Position.x = stepOldPosition.x;
+                        camera.Position.z = stepOldPosition.z;
+                    } else {
+                        // Valido
+                        camera.Position.y = newFloorHeight + 50.0f;
+                        currentFloorHeight = newFloorHeight;
+                    }
                 }
-            }
-            
-            // Aplicar altura
-            if (newFloorHeight > -90000.0f) {
-                 camera.Position.y = newFloorHeight + 50.0f;
             }
         }
     }

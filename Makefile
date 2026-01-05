@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iinclude -Iglad/include
+CXXFLAGS = -std=c++17 -Wall -O3 -Iinclude -Iglad/include
 LDFLAGS = -lglfw -ldl -lGL -lX11 -lpthread
 
 OBJDIR = obj
