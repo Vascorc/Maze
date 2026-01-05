@@ -21,8 +21,8 @@ void main()
         // Multiplicar cor pelo overlayColor para tingir
         vec3 finalColor = texColor.rgb * overlayColor;
         
-        // Usar luminancia como alpha - pixels pretos ficam transparentes
-        FragColor = vec4(finalColor, luminance * alpha);
+        // Usar alpha da textura original
+        FragColor = vec4(finalColor, texColor.a * alpha);
     } else {
         // Modo overlay animado (vitória)
         // Criar efeito de vinheta - mais escuro nas bordas, mais brilhante no centro
